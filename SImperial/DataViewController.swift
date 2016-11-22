@@ -64,9 +64,9 @@ class DataViewController: UIViewController {
         if let measurement = dataObject {
             if let imperialText = imperialTextField.text {
                 if let imperialValue = Double(imperialText) {
-                    let siValue = measurement.convert(fromUnit: self.selectedImperialUnit!, toUnit: self.selectedImperialUnit!, fromValue: imperialValue)
+                    let siValue = measurement.convert(fromUnit: self.selectedImperialUnit!, toUnit: self.selectedSiUnit!, fromValue: imperialValue)
                     siTextField.text = String(round(10 * siValue) / 10)
-                    
+
                 } else {
                     siTextField.text = ""
                 }
