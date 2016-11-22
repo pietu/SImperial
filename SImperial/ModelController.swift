@@ -19,11 +19,11 @@ struct Temperature: Measurement {
     var header: String {
         return "Temperature"
     }
-    
+
     var SIValues: [NSDictionary] {
         return [["name": "Celcius", "abbreviation": "ºC"]]
     }
-    
+
     var imperialValues: [NSDictionary] {
         return [["name": "Fahrenheit", "abbreviation": "ºF"]]
     }
@@ -44,12 +44,12 @@ struct Weight: Measurement {
     var header: String {
         return "Weight"
     }
-    
+
     var SIValues: [NSDictionary] {
         return [["name": "Gram", "abbreviation": "g"],
                 ["name": "Kilogram", "abbreviation": "kg"]]
     }
-    
+
     var imperialValues: [NSDictionary] {
         return [["name": "Stone", "abbreviation": "st"],
                 ["name": "Pound", "abbreviation": "lb"],
@@ -99,7 +99,7 @@ struct Weight: Measurement {
             return fromValue
         }
     }
-    
+
     func convertStone(toUnit: String, fromValue: Double) -> Double {
         switch toUnit {
         case "g":
@@ -138,14 +138,14 @@ struct Length: Measurement {
     var header: String {
         return "Length"
     }
-    
+
     var SIValues: [NSDictionary] {
         return [["name": "Millimeter", "abbreviation": "mm"],
                 ["name": "Centimeter", "abbreviation": "cm"],
                 ["name": "Meter", "abbreviation": "m"],
                 ["name": "Kilometer", "abbreviation": "km"]]
     }
-    
+
     var imperialValues: [NSDictionary] {
         return [["name": "Inch", "abbreviation": "\""],
                 ["name": "Foot", "abbreviation": "'"],
@@ -303,12 +303,12 @@ struct Volume: Measurement {
     var header: String {
         return "Volume"
     }
-    
+
     var SIValues: [NSDictionary] {
         return [["name": "Millilitre", "abbreviation": "ml"],
                 ["name": "Litre", "abbreviation": "l"]]
     }
-    
+
     var imperialValues: [NSDictionary] {
         return [["name": "Pint", "abbreviation": "pt"],
                 ["name": "Gallon", "abbreviation": "gal"]]
@@ -411,7 +411,7 @@ class ModelController: NSObject, UIPageViewControllerDataSource {
         if (index == 0) || (index == NSNotFound) {
             return nil
         }
-        
+
         index -= 1
         return self.viewControllerAtIndex(index, storyboard: viewController.storyboard!)
     }
@@ -421,7 +421,7 @@ class ModelController: NSObject, UIPageViewControllerDataSource {
         if index == NSNotFound {
             return nil
         }
-        
+
         index += 1
         if index == self.pageData.count {
             return nil
@@ -430,4 +430,3 @@ class ModelController: NSObject, UIPageViewControllerDataSource {
     }
 
 }
-
