@@ -152,6 +152,7 @@
 				TargetAttributes = {
 					D61A01791DE37FFC005C1D6A = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 7AG3P9M89H;
 						ProvisioningStyle = Automatic;
 					};
 					D61A01911DE37FFC005C1D6A = {
@@ -347,6 +348,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 7AG3P9M89H;
 				INFOPLIST_FILE = SImperial/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pietu.SImperial;
@@ -359,6 +361,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 7AG3P9M89H;
 				INFOPLIST_FILE = SImperial/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pietu.SImperial;
