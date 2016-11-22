@@ -43,8 +43,7 @@ class DataViewController: UIViewController {
             self.imperialLabel!.text = ""
         }
     }
-    
-    
+
     @IBAction func onSiChanged(_ sender: Any) {
         if let measurement = dataObject {
             if let siText = siTextField.text {
@@ -60,7 +59,7 @@ class DataViewController: UIViewController {
             }
         }
     }
-    
+
     @IBAction func onImperialChanged(_ sender: Any) {
         if let measurement = dataObject {
             if let imperialText = imperialTextField.text {
@@ -75,6 +74,16 @@ class DataViewController: UIViewController {
                 siTextField.text = ""
             }
         }
+    }
+
+    @IBAction func onSiTouchDown(_ sender: Any) {
+        siTextField.becomeFirstResponder()
+        siTextField.selectedTextRange =  siTextField.textRange(from: siTextField.beginningOfDocument, to: siTextField.endOfDocument)
+    }
+
+    @IBAction func onImperialTouchDown(_ sender: Any) {
+        imperialTextField.becomeFirstResponder()
+        imperialTextField.selectedTextRange =  imperialTextField.textRange(from: imperialTextField.beginningOfDocument, to: imperialTextField.endOfDocument)
     }
 }
 

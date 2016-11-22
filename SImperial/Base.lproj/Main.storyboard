@@ -53,6 +53,7 @@
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" returnKeyType="done"/>
                                         <connections>
                                             <action selector="onImperialChanged:" destination="S4R-Ja-viH" eventType="editingChanged" id="aDN-pu-XGT"/>
+                                            <action selector="onImperialTouchDown:" destination="S4R-Ja-viH" eventType="touchDown" id="Okq-Pp-iHB"/>
                                         </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="siUnit" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FC1-D5-SVG">
@@ -86,6 +87,7 @@
                                         <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                         <connections>
                                             <action selector="onSiChanged:" destination="S4R-Ja-viH" eventType="editingChanged" id="aLv-5Q-2sO"/>
+                                            <action selector="onSiTouchDown:" destination="S4R-Ja-viH" eventType="touchDown" id="ciU-SQ-CLO"/>
                                         </connections>
                                     </textField>
                                 </subviews>
