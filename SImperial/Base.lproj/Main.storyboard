@@ -56,26 +56,6 @@
                                             <action selector="onImperialTouchDown:" destination="S4R-Ja-viH" eventType="touchDown" id="Okq-Pp-iHB"/>
                                         </connections>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="siUnit" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FC1-D5-SVG">
-                                        <rect key="frame" x="8" y="78" width="97" height="33"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="97" id="8BI-hr-7oM"/>
-                                            <constraint firstAttribute="height" constant="33" id="UFS-jO-xXp"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="imperialUnit" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gfs-a5-7to">
-                                        <rect key="frame" x="230" y="78" width="97" height="33"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="97" id="byT-vt-eh7"/>
-                                            <constraint firstAttribute="height" constant="33" id="yRC-Wl-pog"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XDt-g0-WAI">
                                         <rect key="frame" x="8" y="113" width="97" height="30"/>
                                         <constraints>
@@ -90,17 +70,45 @@
                                             <action selector="onSiTouchDown:" destination="S4R-Ja-viH" eventType="touchDown" id="ciU-SQ-CLO"/>
                                         </connections>
                                     </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I8c-6a-37S">
+                                        <rect key="frame" x="8" y="73" width="97" height="33"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="33" id="ZgK-qT-zCF"/>
+                                            <constraint firstAttribute="width" constant="97" id="umj-gv-l9e"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="siButton">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="siButtonClick:" destination="S4R-Ja-viH" eventType="touchUpInside" id="dQ5-BU-73X"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SPJ-Ys-oDO">
+                                        <rect key="frame" x="230" y="71" width="97" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="DSl-6X-39d"/>
+                                            <constraint firstAttribute="width" constant="97" id="eLb-jk-njx"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="imperialButton">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="imperialButtonClick:" destination="S4R-Ja-viH" eventType="touchUpInside" id="Ty9-Eq-Xw6"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="FC1-D5-SVG" firstAttribute="top" secondItem="s1b-V9-EN7" secondAttribute="top" constant="78" id="28U-eT-F9c"/>
-                                    <constraint firstAttribute="trailing" secondItem="gfs-a5-7to" secondAttribute="trailing" constant="8" id="3TX-lq-Moi"/>
+                                    <constraint firstItem="I8c-6a-37S" firstAttribute="leading" secondItem="s1b-V9-EN7" secondAttribute="leading" constant="8" id="3wI-4J-R02"/>
                                     <constraint firstItem="XDt-g0-WAI" firstAttribute="leading" secondItem="s1b-V9-EN7" secondAttribute="leading" constant="8" id="9bR-zb-HiG"/>
-                                    <constraint firstItem="XDt-g0-WAI" firstAttribute="top" secondItem="FC1-D5-SVG" secondAttribute="bottom" constant="2" id="ACX-eY-1n6"/>
-                                    <constraint firstItem="gfs-a5-7to" firstAttribute="top" secondItem="s1b-V9-EN7" secondAttribute="top" constant="78" id="Rpr-s8-iDq"/>
-                                    <constraint firstItem="InC-ox-2JZ" firstAttribute="top" secondItem="gfs-a5-7to" secondAttribute="bottom" constant="2" id="gxc-ao-yJ2"/>
+                                    <constraint firstAttribute="trailing" secondItem="SPJ-Ys-oDO" secondAttribute="trailing" constant="8" id="H45-oh-f44"/>
+                                    <constraint firstItem="I8c-6a-37S" firstAttribute="top" secondItem="s1b-V9-EN7" secondAttribute="top" constant="73" id="Sdw-MK-E2Y"/>
+                                    <constraint firstItem="XDt-g0-WAI" firstAttribute="top" secondItem="I8c-6a-37S" secondAttribute="bottom" constant="7" id="WGA-oA-atr"/>
+                                    <constraint firstItem="SPJ-Ys-oDO" firstAttribute="top" secondItem="s1b-V9-EN7" secondAttribute="top" constant="71" id="dIE-vv-88i"/>
+                                    <constraint firstItem="InC-ox-2JZ" firstAttribute="top" secondItem="SPJ-Ys-oDO" secondAttribute="bottom" constant="6" id="rbe-VF-ybl"/>
                                     <constraint firstAttribute="trailing" secondItem="InC-ox-2JZ" secondAttribute="trailing" constant="8" id="t4o-TZ-F5k"/>
-                                    <constraint firstItem="FC1-D5-SVG" firstAttribute="leading" secondItem="s1b-V9-EN7" secondAttribute="leading" constant="8" id="zAR-Br-tdH"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Header" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="cF2-Le-7mQ">
@@ -122,15 +130,65 @@
                     </view>
                     <connections>
                         <outlet property="dataLabel" destination="cF2-Le-7mQ" id="3EH-BK-JV6"/>
-                        <outlet property="imperialLabel" destination="gfs-a5-7to" id="UVX-DA-6Ue"/>
+                        <outlet property="imperialButton" destination="SPJ-Ys-oDO" id="nYh-W9-yfc"/>
                         <outlet property="imperialTextField" destination="InC-ox-2JZ" id="P35-M4-Kdy"/>
-                        <outlet property="siLabel" destination="FC1-D5-SVG" id="8D3-nI-3u5"/>
+                        <outlet property="siButton" destination="I8c-6a-37S" id="dCr-cv-Yjb"/>
                         <outlet property="siTextField" destination="XDt-g0-WAI" id="LYV-v0-gBw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GmD-Rr-ZGN" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="596" y="-243.32833583208398"/>
+        </scene>
+        <!--Pop Over View Controller-->
+        <scene sceneID="7Di-2V-47R">
+            <objects>
+                <viewController storyboardIdentifier="popoverController" id="ukq-WK-Awx" customClass="PopOverViewController" customModule="SImperial" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mi8-FO-FS1"/>
+                        <viewControllerLayoutGuide type="bottom" id="8t9-rZ-rz2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nFQ-Sw-WHU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mkZ-Ge-qeN">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="unitCell" id="UJw-NQ-qcy">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UJw-NQ-qcy" id="RZL-tB-Tqc">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="ukq-WK-Awx" id="IJk-Lx-Lkf"/>
+                                    <outlet property="delegate" destination="ukq-WK-Awx" id="xwZ-6j-1C3"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8t9-rZ-rz2" firstAttribute="top" secondItem="mkZ-Ge-qeN" secondAttribute="bottom" id="BRo-Ai-NAT"/>
+                            <constraint firstAttribute="trailing" secondItem="mkZ-Ge-qeN" secondAttribute="trailing" id="VjO-1X-bAH"/>
+                            <constraint firstItem="mkZ-Ge-qeN" firstAttribute="top" secondItem="mi8-FO-FS1" secondAttribute="bottom" id="tW5-Mg-Zrl"/>
+                            <constraint firstItem="mkZ-Ge-qeN" firstAttribute="leading" secondItem="nFQ-Sw-WHU" secondAttribute="leading" id="vHh-bj-3Le"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="667"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qgo-G0-Axe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1456.8" y="-243.32833583208398"/>
         </scene>
     </scenes>
 </document>

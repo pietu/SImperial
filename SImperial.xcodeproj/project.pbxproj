@@ -15,6 +15,7 @@
 		D61A01891DE37FFC005C1D6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D61A01881DE37FFC005C1D6A /* Assets.xcassets */; };
 		D61A018C1DE37FFC005C1D6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D61A018A1DE37FFC005C1D6A /* LaunchScreen.storyboard */; };
 		D61A01971DE37FFC005C1D6A /* SImperialTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61A01961DE37FFC005C1D6A /* SImperialTests.swift */; };
+		D6E935601DF5B55700BA740A /* PopOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E9355F1DF5B55700BA740A /* PopOverViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		D61A01921DE37FFC005C1D6A /* SImperialTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SImperialTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D61A01961DE37FFC005C1D6A /* SImperialTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SImperialTests.swift; sourceTree = "<group>"; };
 		D61A01981DE37FFC005C1D6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D6E9355F1DF5B55700BA740A /* PopOverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopOverViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 				D61A01881DE37FFC005C1D6A /* Assets.xcassets */,
 				D61A018A1DE37FFC005C1D6A /* LaunchScreen.storyboard */,
 				D61A018D1DE37FFC005C1D6A /* Info.plist */,
+				D6E9355F1DF5B55700BA740A /* PopOverViewController.swift */,
 			);
 			path = SImperial;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 			files = (
 				D61A01801DE37FFC005C1D6A /* RootViewController.swift in Sources */,
 				D61A01841DE37FFC005C1D6A /* ModelController.swift in Sources */,
+				D6E935601DF5B55700BA740A /* PopOverViewController.swift in Sources */,
 				D61A01821DE37FFC005C1D6A /* DataViewController.swift in Sources */,
 				D61A017E1DE37FFC005C1D6A /* AppDelegate.swift in Sources */,
 			);
@@ -417,6 +421,7 @@
 				D61A019D1DE37FFC005C1D6A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D61A019E1DE37FFC005C1D6A /* Build configuration list for PBXNativeTarget "SImperialTests" */ = {
 			isa = XCConfigurationList;
@@ -425,6 +430,7 @@
 				D61A01A01DE37FFC005C1D6A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
