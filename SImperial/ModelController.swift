@@ -51,8 +51,7 @@ struct Weight: Measurement {
     }
 
     var imperialValues: [NSDictionary] {
-        return [["name": "Stone", "abbreviation": "st"],
-                ["name": "Pound", "abbreviation": "lb"],
+        return [["name": "Pound", "abbreviation": "lb"],
                 ["name": "Ounce", "abbreviation": "oz"]]
     }
 
@@ -62,8 +61,6 @@ struct Weight: Measurement {
             return convertGram(toUnit: toUnit, fromValue: fromValue)
         case "kg":
             return convertKilogram(toUnit: toUnit, fromValue: fromValue)
-        case "st":
-            return convertStone(toUnit: toUnit, fromValue: fromValue)
         case "lb":
             return convertPound(toUnit: toUnit, fromValue: fromValue)
         case "oz":
@@ -76,8 +73,6 @@ struct Weight: Measurement {
 
     func convertGram(toUnit: String, fromValue: Double) -> Double {
         switch toUnit {
-        case "st":
-            return fromValue * 0.000157473
         case "lb":
             return fromValue * 0.00220462
         case "oz":
@@ -89,23 +84,10 @@ struct Weight: Measurement {
 
     func convertKilogram(toUnit: String, fromValue: Double) -> Double {
         switch toUnit {
-        case "st":
-            return fromValue * 0.157473
         case "lb":
             return fromValue * 2.20462
         case "oz":
             return fromValue * 3.5274
-        default:
-            return fromValue
-        }
-    }
-
-    func convertStone(toUnit: String, fromValue: Double) -> Double {
-        switch toUnit {
-        case "g":
-            return fromValue * 6350.29
-        case "kg":
-            return fromValue * 6.35029
         default:
             return fromValue
         }
@@ -306,6 +288,7 @@ struct Volume: Measurement {
 
     var SIValues: [NSDictionary] {
         return [["name": "Millilitre", "abbreviation": "ml"],
+                ["name": "Decilitre", "abbreviation": "dl"],
                 ["name": "Litre", "abbreviation": "l"]]
     }
 
@@ -318,6 +301,8 @@ struct Volume: Measurement {
         switch fromUnit {
         case "ml":
             return convertMillilitre(toUnit: toUnit, fromValue: fromValue)
+        case "dl":
+            return convertDecilitre(toUnit: toUnit, fromValue: fromValue)
         case "l":
             return convertLitre(toUnit: toUnit, fromValue: fromValue)
         case "pt":
@@ -341,6 +326,17 @@ struct Volume: Measurement {
         }
     }
 
+    func convertDecilitre(toUnit: String, fromValue: Double) -> Double {
+        switch toUnit {
+        case "pt":
+            return fromValue * 0.211338
+        case "gal":
+            return fromValue * 0.0264172
+        default:
+            return fromValue
+        }
+    }
+
     func convertLitre(toUnit: String, fromValue: Double) -> Double {
         switch toUnit {
         case "pt":
@@ -356,6 +352,8 @@ struct Volume: Measurement {
         switch toUnit {
         case "ml":
             return fromValue * 473.176
+        case "dl":
+            return fromValue * 4.73176
         case "l":
             return fromValue * 0.473176
         default:
@@ -367,6 +365,8 @@ struct Volume: Measurement {
         switch toUnit {
         case "ml":
             return fromValue * 3785.41
+        case "dl":
+            return fromValue * 37.8541
         case "l":
             return fromValue * 3.78541
         default:
