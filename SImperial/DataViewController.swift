@@ -33,14 +33,14 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
         if let measurement = dataObject {
             self.dataLabel!.text = measurement.header
             let siUnit = measurement.SIValues[0]
-            let siText = siUnit.object(forKey: "name") as! String?
+            let siText = siUnit["name"]
             self.siButton.setTitle(siText, for: .normal)
-            selectedSiUnit = siUnit.object(forKey: "abbreviation") as! String?
+            selectedSiUnit = siUnit["abbreviation"]
 
             let imperialUnit = measurement.imperialValues[0]
-            let imperialText = imperialUnit.object(forKey: "name") as! String?
+            let imperialText = imperialUnit["name"]
             imperialButton.setTitle(imperialText, for: .normal)
-            selectedImperialUnit = imperialUnit.object(forKey: "abbreviation") as! String?
+            selectedImperialUnit = imperialUnit["abbreviation"]
         } else {
             self.dataLabel!.text = ""
             self.siButton.setTitle("", for: .normal)
@@ -51,18 +51,18 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
     public func unitSelected(isSIUnit: Bool, name: String) {
         if let measurement = self.dataObject {
             if (isSIUnit) {
-                let siUnit = measurement.SIValues.filter({(unit: NSDictionary) -> Bool in
-                    return unit.object(forKey: "name") as! String == name
+                let siUnit = measurement.SIValues.filter({(unit: Dictionary<String,String>) -> Bool in
+                    return unit["name"] == name
                 })[0]
                 self.siButton.setTitle(name, for: .normal)
-                self.selectedSiUnit = siUnit.object(forKey: "abbreviation") as! String?
+                self.selectedSiUnit = siUnit["abbreviation"]
                 triggerSIValueChange()
             } else {
-                let imperialUnit = measurement.imperialValues.filter({(unit: NSDictionary) -> Bool in
-                    return unit.object(forKey: "name") as! String == name
+                let imperialUnit = measurement.imperialValues.filter({(unit: Dictionary<String,String>) -> Bool in
+                    return unit["name"] == name
                 })[0]
                 self.imperialButton.setTitle(name, for: .normal)
-                self.selectedImperialUnit = imperialUnit.object(forKey: "abbreviation") as! String?
+                self.selectedImperialUnit = imperialUnit["abbreviation"]
                 triggerImperialValueChange()
             }
         }
@@ -93,8 +93,8 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
     @IBAction func siButtonClick(_ sender: UIButton) {
         if let measurement = dataObject {
             if measurement.SIValues.count > 1 {
-                unitSelections = measurement.SIValues.map({ (unit: NSDictionary) -> String in
-                    return unit.object(forKey: "name") as! String
+                unitSelections = measurement.SIValues.map({ (unit: Dictionary<String,String>) -> String in
+                    return unit["name"]!
                 })
                 launchPopOver(sender, true)
             }
@@ -104,8 +104,8 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
     @IBAction func imperialButtonClick(_ sender: UIButton) {
         if let measurement = dataObject {
             if measurement.imperialValues.count > 1 {
-                unitSelections = measurement.imperialValues.map({ (unit: NSDictionary) -> String in
-                    return unit.object(forKey: "name") as! String
+                unitSelections = measurement.imperialValues.map({ (unit: Dictionary<String,String>) -> String in
+                    return unit["name"]!
                 })
                 launchPopOver(sender, false)
             }

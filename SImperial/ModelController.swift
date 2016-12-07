@@ -10,8 +10,8 @@ import UIKit
 
 protocol Measurement {
     var header: String { get }
-    var SIValues: [NSDictionary] { get }
-    var imperialValues: [NSDictionary] { get }
+    var SIValues: [Dictionary<String, String>] { get }
+    var imperialValues: [Dictionary<String, String>] { get }
     func convert(fromUnit: String, toUnit: String, fromValue: Double) -> Double
 }
 
@@ -20,11 +20,11 @@ struct Temperature: Measurement {
         return "Temperature"
     }
 
-    var SIValues: [NSDictionary] {
+    var SIValues: [Dictionary<String, String>] {
         return [["name": "Celcius", "abbreviation": "ºC"]]
     }
 
-    var imperialValues: [NSDictionary] {
+    var imperialValues: [Dictionary<String, String>] {
         return [["name": "Fahrenheit", "abbreviation": "ºF"]]
     }
 
@@ -45,12 +45,12 @@ struct Weight: Measurement {
         return "Weight"
     }
 
-    var SIValues: [NSDictionary] {
+    var SIValues: [Dictionary<String, String>] {
         return [["name": "Gram", "abbreviation": "g"],
                 ["name": "Kilogram", "abbreviation": "kg"]]
     }
 
-    var imperialValues: [NSDictionary] {
+    var imperialValues: [Dictionary<String, String>] {
         return [["name": "Pound", "abbreviation": "lb"],
                 ["name": "Ounce", "abbreviation": "oz"]]
     }
@@ -121,14 +121,14 @@ struct Length: Measurement {
         return "Length"
     }
 
-    var SIValues: [NSDictionary] {
+    var SIValues: [Dictionary<String, String>] {
         return [["name": "Millimeter", "abbreviation": "mm"],
                 ["name": "Centimeter", "abbreviation": "cm"],
                 ["name": "Meter", "abbreviation": "m"],
                 ["name": "Kilometer", "abbreviation": "km"]]
     }
 
-    var imperialValues: [NSDictionary] {
+    var imperialValues: [Dictionary<String, String>] {
         return [["name": "Inch", "abbreviation": "\""],
                 ["name": "Foot", "abbreviation": "'"],
                 ["name": "Yard", "abbreviation": "yd"],
@@ -286,13 +286,13 @@ struct Volume: Measurement {
         return "Volume"
     }
 
-    var SIValues: [NSDictionary] {
+    var SIValues: [Dictionary<String, String>] {
         return [["name": "Millilitre", "abbreviation": "ml"],
                 ["name": "Decilitre", "abbreviation": "dl"],
                 ["name": "Litre", "abbreviation": "l"]]
     }
 
-    var imperialValues: [NSDictionary] {
+    var imperialValues: [Dictionary<String, String>] {
         return [["name": "Pint", "abbreviation": "pt"],
                 ["name": "Gallon", "abbreviation": "gal"]]
     }
