@@ -60,8 +60,8 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" returnKeyType="done"/>
                                         <connections>
-                                            <action selector="onImperialChanged:" destination="S4R-Ja-viH" eventType="editingChanged" id="aDN-pu-XGT"/>
                                             <action selector="onImperialTouchDown:" destination="S4R-Ja-viH" eventType="touchDown" id="Okq-Pp-iHB"/>
+                                            <action selector="onToChanged:" destination="S4R-Ja-viH" eventType="editingChanged" id="aDN-pu-XGT"/>
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XDt-g0-WAI">
@@ -74,7 +74,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                         <connections>
-                                            <action selector="onSiChanged:" destination="S4R-Ja-viH" eventType="editingChanged" id="aLv-5Q-2sO"/>
+                                            <action selector="onFromChanged:" destination="S4R-Ja-viH" eventType="editingChanged" id="aLv-5Q-2sO"/>
                                             <action selector="onSiTouchDown:" destination="S4R-Ja-viH" eventType="touchDown" id="ciU-SQ-CLO"/>
                                         </connections>
                                     </textField>
@@ -85,11 +85,11 @@
                                             <constraint firstAttribute="width" constant="140" id="rUM-6d-YJg"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
-                                        <state key="normal" title="siButton">
+                                        <state key="normal" title="fromButton">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="siButtonClick:" destination="S4R-Ja-viH" eventType="touchUpInside" id="dQ5-BU-73X"/>
+                                            <action selector="fromButtonClick:" destination="S4R-Ja-viH" eventType="touchUpInside" id="dQ5-BU-73X"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="SPJ-Ys-oDO">
@@ -99,11 +99,19 @@
                                             <constraint firstAttribute="width" constant="140" id="p3V-OZ-IB2"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
-                                        <state key="normal" title="imperialButton">
+                                        <state key="normal" title="toButton">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="imperialButtonClick:" destination="S4R-Ja-viH" eventType="touchUpInside" id="Ty9-Eq-Xw6"/>
+                                            <action selector="toButtonClick:" destination="S4R-Ja-viH" eventType="touchUpInside" id="Ty9-Eq-Xw6"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TaO-8c-mNH">
+                                        <rect key="frame" x="8" y="32" width="319" height="27"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
+                                        <state key="normal" title="Switch"/>
+                                        <connections>
+                                            <action selector="onSwitchButtonClicked:" destination="S4R-Ja-viH" eventType="touchUpInside" id="uBd-t3-WBm"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -115,8 +123,10 @@
                                     <constraint firstAttribute="trailing" secondItem="SPJ-Ys-oDO" secondAttribute="trailing" constant="8" id="H45-oh-f44"/>
                                     <constraint firstItem="XDt-g0-WAI" firstAttribute="top" secondItem="s1b-V9-EN7" secondAttribute="top" constant="113" id="KQT-Ux-2JI"/>
                                     <constraint firstItem="InC-ox-2JZ" firstAttribute="top" secondItem="SPJ-Ys-oDO" secondAttribute="bottom" constant="6" id="dI5-0m-hBt"/>
+                                    <constraint firstItem="TaO-8c-mNH" firstAttribute="leading" secondItem="s1b-V9-EN7" secondAttribute="leading" constant="8" id="iNG-11-yOQ"/>
                                     <constraint firstAttribute="trailing" secondItem="InC-ox-2JZ" secondAttribute="trailing" constant="8" id="t4o-TZ-F5k"/>
                                     <constraint firstItem="XDt-g0-WAI" firstAttribute="top" secondItem="I8c-6a-37S" secondAttribute="bottom" constant="7" id="tjv-9O-uhJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="TaO-8c-mNH" secondAttribute="trailing" constant="8" id="ybx-Ds-4gZ"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Header" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="cF2-Le-7mQ">
@@ -130,6 +140,7 @@
                             <constraint firstAttribute="trailing" secondItem="s1b-V9-EN7" secondAttribute="trailing" constant="20" symbolic="YES" id="333-Jl-G0r"/>
                             <constraint firstItem="s1b-V9-EN7" firstAttribute="leading" secondItem="ZwX-cT-FIQ" secondAttribute="leading" constant="20" symbolic="YES" id="CIC-qa-9gW"/>
                             <constraint firstItem="cF2-Le-7mQ" firstAttribute="leading" secondItem="ZwX-cT-FIQ" secondAttribute="leading" constant="20" symbolic="YES" id="PnF-O8-Bso"/>
+                            <constraint firstItem="TaO-8c-mNH" firstAttribute="top" secondItem="cF2-Le-7mQ" secondAttribute="bottom" constant="65" id="WDC-nk-W8C"/>
                             <constraint firstAttribute="bottom" secondItem="s1b-V9-EN7" secondAttribute="bottom" constant="20" symbolic="YES" id="Xg4-Xc-7kb"/>
                             <constraint firstAttribute="trailing" secondItem="cF2-Le-7mQ" secondAttribute="trailing" constant="20" symbolic="YES" id="cCk-mG-gz5"/>
                             <constraint firstItem="cF2-Le-7mQ" firstAttribute="top" secondItem="fXf-Jd-eTc" secondAttribute="bottom" constant="51" id="m7P-Ly-7cQ"/>
@@ -138,12 +149,12 @@
                     </view>
                     <connections>
                         <outlet property="dataLabel" destination="cF2-Le-7mQ" id="3EH-BK-JV6"/>
-                        <outlet property="imperialButton" destination="SPJ-Ys-oDO" id="nYh-W9-yfc"/>
-                        <outlet property="imperialTextField" destination="InC-ox-2JZ" id="P35-M4-Kdy"/>
-                        <outlet property="imperialTextFieldTopConstraint" destination="1Cf-gF-iaD" id="a3L-Vc-XlV"/>
-                        <outlet property="siButton" destination="I8c-6a-37S" id="dCr-cv-Yjb"/>
-                        <outlet property="siTextField" destination="XDt-g0-WAI" id="LYV-v0-gBw"/>
-                        <outlet property="siTextFieldTopConstraint" destination="KQT-Ux-2JI" id="9IL-cb-LGX"/>
+                        <outlet property="fromButton" destination="I8c-6a-37S" id="dCr-cv-Yjb"/>
+                        <outlet property="fromTextField" destination="XDt-g0-WAI" id="LYV-v0-gBw"/>
+                        <outlet property="fromTextFieldTopConstraint" destination="KQT-Ux-2JI" id="9IL-cb-LGX"/>
+                        <outlet property="toButton" destination="SPJ-Ys-oDO" id="nYh-W9-yfc"/>
+                        <outlet property="toTextField" destination="InC-ox-2JZ" id="P35-M4-Kdy"/>
+                        <outlet property="toTextFieldTopConstraint" destination="1Cf-gF-iaD" id="a3L-Vc-XlV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GmD-Rr-ZGN" sceneMemberID="firstResponder"/>
@@ -170,7 +181,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UJw-NQ-qcy" id="RZL-tB-Tqc">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>

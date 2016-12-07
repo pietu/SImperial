@@ -9,7 +9,7 @@
 import UIKit
 
 class PopOverViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    var isSIUnit: Bool = false
+    var isFromUnit: Bool = false
     var unitSelections: [Dictionary<String,String>]? = nil
     var parentController: DataViewController? = nil
     
@@ -35,7 +35,11 @@ class PopOverViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let selections = self.unitSelections {
             if let parent = self.parentController {
-                parent.unitSelected(isSIUnit: self.isSIUnit, name: selections[indexPath.row]["name"]!)
+                if self.isFromUnit {
+                    parent.fromUnitSelected(name: selections[indexPath.row]["name"]!)
+                } else {
+                    parent.toUnitSelected(name: selections[indexPath.row]["name"]!)
+                }
             }
         }
         self.dismiss(animated: true, completion: nil)
