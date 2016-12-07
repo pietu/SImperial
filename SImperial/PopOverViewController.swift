@@ -23,6 +23,7 @@ class PopOverViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "unitCell")
+        cell.textLabel?.font = UIFont(name: "Montserrat-Regular", size: 17)
         if let selections = self.unitSelections {
             cell.textLabel?.text = selections[indexPath.row]
         } else {
