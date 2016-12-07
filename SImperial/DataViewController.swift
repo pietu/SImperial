@@ -19,7 +19,7 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
     var dataObject: Measurement? = nil
     var selectedSiUnit: String? = nil
     var selectedImperialUnit: String? = nil
-    var unitSelections: [String]? = nil
+    var unitSelections: [Dictionary<String,String>]? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,9 +119,7 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
     @IBAction func siButtonClick(_ sender: UIButton) {
         if let measurement = dataObject {
             if measurement.SIValues.count > 1 {
-                unitSelections = measurement.SIValues.map({ (unit: Dictionary<String,String>) -> String in
-                    return unit["name"]!
-                })
+                unitSelections = measurement.SIValues
                 launchPopOver(sender, true)
             }
         }
@@ -130,9 +128,7 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
     @IBAction func imperialButtonClick(_ sender: UIButton) {
         if let measurement = dataObject {
             if measurement.imperialValues.count > 1 {
-                unitSelections = measurement.imperialValues.map({ (unit: Dictionary<String,String>) -> String in
-                    return unit["name"]!
-                })
+                unitSelections = measurement.imperialValues
                 launchPopOver(sender, false)
             }
         }
