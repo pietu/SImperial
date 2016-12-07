@@ -293,10 +293,10 @@ struct Volume: Measurement {
     }
 
     var imperialValues: [Dictionary<String, String>] {
-        return [["name": "US fl. Ounce", "abbreviation": "US fl.oz"],
-                ["name": "US Cup", "abbreviation": "US cup"],
-                ["name": "US Pint", "abbreviation": "US pt"],
-                ["name": "US Gallon", "abbreviation": "US gal"],
+        return [["name": "US fluid Ounce", "abbreviation": "US fl.oz"],
+                ["name": "US liquid Cup", "abbreviation": "US cup"],
+                ["name": "US liquid Pint", "abbreviation": "US pt"],
+                ["name": "US liquid Gallon", "abbreviation": "US gal"],
                 ["name": "Imperial fl. Ounce", "abbreviation": "fl.oz"],
                 ["name": "Imperial Cup", "abbreviation": "cup"],
                 ["name": "Imperial Pint", "abbreviation": "pt"],
