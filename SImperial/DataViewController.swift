@@ -22,6 +22,12 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(DataViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+
+    func dismissKeyboard() {
+        view.endEditing(true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -82,6 +88,7 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
             popOver?.delegate = self
             popOver?.sourceView = sender
             popOver?.sourceRect = CGRect(x: 0, y: 0, width: sender.frame.size.width, height: sender.frame.size.height)
+            self.dismissKeyboard()
             self.present(navController, animated: true, completion: nil)
         }
     }
