@@ -20,6 +20,7 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
     var selectedSiUnit: String? = nil
     var selectedImperialUnit: String? = nil
     var unitSelections: [Dictionary<String,String>]? = nil
+    let defaults: UserDefaults = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,14 +42,19 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
         self.imperialButton.titleLabel?.textAlignment = NSTextAlignment.center
         if let measurement = dataObject {
             self.dataLabel!.text = measurement.header
-            let siUnit = measurement.SIValues[0]
-            let siText = siUnit["name"]
-            self.siButton.setTitle(siText, for: .normal)
+            var siUnit: Dictionary<String,String> = [:]
+            var imperialUnit: Dictionary<String,String> = [:]
+            if let defaultUnits = defaults.dictionary(forKey: self.dataLabel!.text!) {
+                siUnit = defaultUnits["siUnit"] as! Dictionary<String, String>
+                imperialUnit = defaultUnits["imperialUnit"] as! Dictionary<String, String>
+            } else {
+                siUnit = measurement.SIValues[0]
+                imperialUnit = measurement.imperialValues[0]
+                defaults.set(["siUnit": siUnit, "imperialUnit": imperialUnit], forKey: self.dataLabel!.text!)
+            }
+            self.siButton.setTitle(siUnit["name"], for: .normal)
             selectedSiUnit = siUnit["abbreviation"]
-
-            let imperialUnit = measurement.imperialValues[0]
-            let imperialText = imperialUnit["name"]
-            imperialButton.setTitle(imperialText, for: .normal)
+            imperialButton.setTitle(imperialUnit["name"], for: .normal)
             selectedImperialUnit = imperialUnit["abbreviation"]
         } else {
             self.dataLabel!.text = ""
@@ -78,6 +84,9 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
                 let siUnit = measurement.SIValues.filter({(unit: Dictionary<String,String>) -> Bool in
                     return unit["name"] == name
                 })[0]
+                let defaultUnits = defaults.dictionary(forKey: self.dataLabel!.text!)
+                let imperialUnit = defaultUnits?["imperialUnit"] as! Dictionary<String, String>
+                defaults.set(["siUnit": siUnit, "imperialUnit": imperialUnit], forKey: self.dataLabel!.text!)
                 self.siButton.setTitle(name, for: .normal)
                 self.selectedSiUnit = siUnit["abbreviation"]
                 triggerSIValueChange()
@@ -85,6 +94,9 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
                 let imperialUnit = measurement.imperialValues.filter({(unit: Dictionary<String,String>) -> Bool in
                     return unit["name"] == name
                 })[0]
+                let defaultUnits = defaults.dictionary(forKey: self.dataLabel!.text!)
+                let siUnit = defaultUnits?["siUnit"] as! Dictionary<String, String>
+                defaults.set(["siUnit": siUnit, "imperialUnit": imperialUnit], forKey: self.dataLabel!.text!)
                 self.imperialButton.setTitle(name, for: .normal)
                 self.selectedImperialUnit = imperialUnit["abbreviation"]
                 triggerImperialValueChange()
