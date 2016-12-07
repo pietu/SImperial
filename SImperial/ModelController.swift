@@ -40,9 +40,9 @@ struct Temperature: Measurement {
     }
 }
 
-struct Weight: Measurement {
+struct Mass: Measurement {
     var header: String {
-        return "Weight"
+        return "Mass"
     }
 
     var SIValues: [Dictionary<String, String>] {
@@ -87,7 +87,7 @@ struct Weight: Measurement {
         case "lb":
             return fromValue * 2.20462
         case "oz":
-            return fromValue * 3.5274
+            return fromValue * 35.274
         default:
             return fromValue
         }
@@ -192,13 +192,13 @@ struct Length: Measurement {
     func convertMeter(toUnit: String, fromValue: Double) -> Double {
         switch toUnit {
         case "\"":
-            return fromValue * 3.93701
+            return fromValue * 39.3701
         case "'":
-            return fromValue * 0.328084
+            return fromValue * 3.28084
         case "yd":
-            return fromValue * 0.109361
+            return fromValue * 1.09361
         case "mi":
-            return fromValue * 0.000062137
+            return fromValue * 0.00062137
         default:
             return fromValue
         }
@@ -293,8 +293,14 @@ struct Volume: Measurement {
     }
 
     var imperialValues: [Dictionary<String, String>] {
-        return [["name": "Pint", "abbreviation": "pt"],
-                ["name": "Gallon", "abbreviation": "gal"]]
+        return [["name": "US fl. Ounce", "abbreviation": "US fl.oz"],
+                ["name": "US Cup", "abbreviation": "US cup"],
+                ["name": "US Pint", "abbreviation": "US pt"],
+                ["name": "US Gallon", "abbreviation": "US gal"],
+                ["name": "Imperial fl. Ounce", "abbreviation": "fl.oz"],
+                ["name": "Imperial Cup", "abbreviation": "cup"],
+                ["name": "Imperial Pint", "abbreviation": "pt"],
+                ["name": "Imperial Gallon", "abbreviation": "gal"]]
     }
 
     internal func convert(fromUnit: String, toUnit: String, fromValue: Double) -> Double {
@@ -305,6 +311,18 @@ struct Volume: Measurement {
             return convertDecilitre(toUnit: toUnit, fromValue: fromValue)
         case "l":
             return convertLitre(toUnit: toUnit, fromValue: fromValue)
+        case "US fl.oz":
+            return convertUSFluidOunce(toUnit: toUnit, fromValue: fromValue)
+        case "US cup":
+            return convertUSCup(toUnit: toUnit, fromValue: fromValue)
+        case "US pt":
+            return convertUSPint(toUnit: toUnit, fromValue: fromValue)
+        case "US gal":
+            return convertUSGallon(toUnit: toUnit, fromValue: fromValue)
+        case "fl.oz":
+            return convertFluidOunce(toUnit: toUnit, fromValue: fromValue)
+        case "cup":
+            return convertCup(toUnit: toUnit, fromValue: fromValue)
         case "pt":
             return convertPint(toUnit: toUnit, fromValue: fromValue)
         case "gal":
@@ -317,10 +335,22 @@ struct Volume: Measurement {
 
     func convertMillilitre(toUnit: String, fromValue: Double) -> Double {
         switch toUnit {
-        case "pt":
+        case "US fl.oz":
+            return fromValue * 0.033814
+        case "US cup":
+            return fromValue * 0.00416667
+        case "US pt":
             return fromValue * 0.00211338
-        case "gal":
+        case "US gal":
             return fromValue * 0.000264172
+        case "fl.oz":
+            return fromValue * 0.0351951
+        case "cup":
+            return fromValue * 0.00351951
+        case "pt":
+            return fromValue * 0.00175975
+        case "gal":
+            return fromValue * 0.000219969
         default:
             return fromValue
         }
@@ -328,10 +358,22 @@ struct Volume: Measurement {
 
     func convertDecilitre(toUnit: String, fromValue: Double) -> Double {
         switch toUnit {
-        case "pt":
+        case "US fl.oz":
+            return fromValue * 3.3814
+        case "US cup":
+            return fromValue * 0.416667
+        case "US pt":
             return fromValue * 0.211338
-        case "gal":
+        case "US gal":
             return fromValue * 0.0264172
+        case "fl.oz":
+            return fromValue * 3.51951
+        case "cup":
+            return fromValue * 0.351951
+        case "pt":
+            return fromValue * 0.175975
+        case "gal":
+            return fromValue * 0.0219969
         default:
             return fromValue
         }
@@ -339,16 +381,54 @@ struct Volume: Measurement {
 
     func convertLitre(toUnit: String, fromValue: Double) -> Double {
         switch toUnit {
-        case "pt":
+        case "US fl.oz":
+            return fromValue * 33.814
+        case "US cup":
+            return fromValue * 4.16667
+        case "US pt":
             return fromValue * 2.11338
-        case "gal":
+        case "US gal":
             return fromValue * 0.264172
+        case "fl.oz":
+            return fromValue * 35.1951
+        case "cup":
+            return fromValue * 3.51951
+        case "pt":
+            return fromValue * 1.75975
+        case "gal":
+            return fromValue * 0.219969
         default:
             return fromValue
         }
     }
 
-    func convertPint(toUnit: String, fromValue: Double) -> Double {
+    func convertUSFluidOunce(toUnit: String, fromValue: Double) -> Double {
+        switch toUnit {
+        case "ml":
+            return fromValue * 29.5735
+        case "dl":
+            return fromValue * 0.295735
+        case "l":
+            return fromValue * 0.0295735
+        default:
+            return fromValue
+        }
+    }
+
+    func convertUSCup(toUnit: String, fromValue: Double) -> Double {
+        switch toUnit {
+        case "ml":
+            return fromValue * 240
+        case "dl":
+            return fromValue * 2.4
+        case "l":
+            return fromValue * 0.24
+        default:
+            return fromValue
+        }
+    }
+
+    func convertUSPint(toUnit: String, fromValue: Double) -> Double {
         switch toUnit {
         case "ml":
             return fromValue * 473.176
@@ -361,7 +441,7 @@ struct Volume: Measurement {
         }
     }
 
-    func convertGallon(toUnit: String, fromValue: Double) -> Double {
+    func convertUSGallon(toUnit: String, fromValue: Double) -> Double {
         switch toUnit {
         case "ml":
             return fromValue * 3785.41
@@ -369,6 +449,58 @@ struct Volume: Measurement {
             return fromValue * 37.8541
         case "l":
             return fromValue * 3.78541
+        default:
+            return fromValue
+        }
+    }
+
+    func convertFluidOunce(toUnit: String, fromValue: Double) -> Double {
+        switch toUnit {
+        case "ml":
+            return fromValue * 28.4131
+        case "dl":
+            return fromValue * 0.284131
+        case "l":
+            return fromValue * 0.0284131
+        default:
+            return fromValue
+        }
+    }
+
+    func convertCup(toUnit: String, fromValue: Double) -> Double {
+        switch toUnit {
+        case "ml":
+            return fromValue * 284.131
+        case "dl":
+            return fromValue * 2.84131
+        case "l":
+            return fromValue * 0.284131
+        default:
+            return fromValue
+        }
+    }
+
+    func convertPint(toUnit: String, fromValue: Double) -> Double {
+        switch toUnit {
+        case "ml":
+            return fromValue * 568.2609999991457
+        case "dl":
+            return fromValue * 5.682609999991457
+        case "l":
+            return fromValue * 0.568261
+        default:
+            return fromValue
+        }
+    }
+
+    func convertGallon(toUnit: String, fromValue: Double) -> Double {
+        switch toUnit {
+        case "ml":
+            return fromValue * 4546.0879999931657949
+        case "dl":
+            return fromValue * 45.460879999931655959
+        case "l":
+            return fromValue * 4.5460879999931655959
         default:
             return fromValue
         }
@@ -381,7 +513,7 @@ class ModelController: NSObject, UIPageViewControllerDataSource {
 
     override init() {
         super.init()
-        pageData = [Temperature(), Weight(), Length(), Volume()]
+        pageData = [Temperature(), Mass(), Length(), Volume()]
     }
 
     func viewControllerAtIndex(_ index: Int, storyboard: UIStoryboard) -> DataViewController? {
