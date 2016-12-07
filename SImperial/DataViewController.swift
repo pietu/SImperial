@@ -88,6 +88,7 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
             popOver?.delegate = self
             popOver?.sourceView = sender
             popOver?.sourceRect = CGRect(x: 0, y: 0, width: sender.frame.size.width, height: sender.frame.size.height)
+            popOver?.permittedArrowDirections = UIPopoverArrowDirection.up
             self.dismissKeyboard()
             self.present(navController, animated: true, completion: nil)
         }
