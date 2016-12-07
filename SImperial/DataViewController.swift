@@ -99,7 +99,7 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
                 self.defaults.set(["siUnit": siUnit, "imperialUnit": imperialUnit], forKey: self.dataLabel!.text!)
                 self.imperialButton.setTitle(name, for: .normal)
                 self.selectedImperialUnit = imperialUnit["abbreviation"]
-                self.triggerImperialValueChange()
+                self.triggerSIValueChange()
             }
         }
         
