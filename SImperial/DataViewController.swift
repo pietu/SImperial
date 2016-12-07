@@ -9,8 +9,8 @@
 import UIKit
 
 class DataViewController: UIViewController, UIPopoverPresentationControllerDelegate {
-    @IBOutlet weak var siButtonTopContstraint: NSLayoutConstraint!
-    @IBOutlet weak var imperialButtonTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var imperialTextFieldTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var siTextFieldTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var imperialButton: UIButton!
     @IBOutlet weak var siButton: UIButton!
     @IBOutlet weak var dataLabel: UILabel!
@@ -37,6 +37,8 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.siButton.titleLabel?.textAlignment = NSTextAlignment.center
+        self.imperialButton.titleLabel?.textAlignment = NSTextAlignment.center
         if let measurement = dataObject {
             self.dataLabel!.text = measurement.header
             let siUnit = measurement.SIValues[0]
@@ -58,11 +60,11 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
     
     func determineLayout(orientation: UIInterfaceOrientation) {
         if UIInterfaceOrientationIsPortrait(orientation) {
-            self.siButtonTopContstraint.constant = 70
-            self.imperialButtonTopConstraint.constant = 70
+            self.siTextFieldTopConstraint.constant = 113
+            self.imperialTextFieldTopConstraint.constant = 113
         } else {
-            self.siButtonTopContstraint.constant = 20
-            self.imperialButtonTopConstraint.constant = 20
+            self.siTextFieldTopConstraint.constant = 63
+            self.imperialTextFieldTopConstraint.constant = 63
         }
     }
 

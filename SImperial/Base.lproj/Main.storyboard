@@ -78,7 +78,7 @@
                                             <action selector="onSiTouchDown:" destination="S4R-Ja-viH" eventType="touchDown" id="ciU-SQ-CLO"/>
                                         </connections>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I8c-6a-37S">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="I8c-6a-37S">
                                         <rect key="frame" x="8" y="73" width="140" height="33"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="33" id="ZgK-qT-zCF"/>
@@ -92,7 +92,7 @@
                                             <action selector="siButtonClick:" destination="S4R-Ja-viH" eventType="touchUpInside" id="dQ5-BU-73X"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SPJ-Ys-oDO">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="SPJ-Ys-oDO">
                                         <rect key="frame" x="187" y="71" width="140" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="36" id="DSl-6X-39d"/>
@@ -109,14 +109,14 @@
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="InC-ox-2JZ" firstAttribute="top" secondItem="s1b-V9-EN7" secondAttribute="top" constant="113" id="1Cf-gF-iaD"/>
                                     <constraint firstItem="I8c-6a-37S" firstAttribute="leading" secondItem="s1b-V9-EN7" secondAttribute="leading" constant="8" id="3wI-4J-R02"/>
                                     <constraint firstItem="XDt-g0-WAI" firstAttribute="leading" secondItem="s1b-V9-EN7" secondAttribute="leading" constant="8" id="9bR-zb-HiG"/>
                                     <constraint firstAttribute="trailing" secondItem="SPJ-Ys-oDO" secondAttribute="trailing" constant="8" id="H45-oh-f44"/>
-                                    <constraint firstItem="I8c-6a-37S" firstAttribute="top" secondItem="s1b-V9-EN7" secondAttribute="top" constant="73" id="Sdw-MK-E2Y"/>
-                                    <constraint firstItem="XDt-g0-WAI" firstAttribute="top" secondItem="I8c-6a-37S" secondAttribute="bottom" constant="7" id="WGA-oA-atr"/>
-                                    <constraint firstItem="SPJ-Ys-oDO" firstAttribute="top" secondItem="s1b-V9-EN7" secondAttribute="top" constant="71" id="dIE-vv-88i"/>
-                                    <constraint firstItem="InC-ox-2JZ" firstAttribute="top" secondItem="SPJ-Ys-oDO" secondAttribute="bottom" constant="6" id="rbe-VF-ybl"/>
+                                    <constraint firstItem="XDt-g0-WAI" firstAttribute="top" secondItem="s1b-V9-EN7" secondAttribute="top" constant="113" id="KQT-Ux-2JI"/>
+                                    <constraint firstItem="InC-ox-2JZ" firstAttribute="top" secondItem="SPJ-Ys-oDO" secondAttribute="bottom" constant="6" id="dI5-0m-hBt"/>
                                     <constraint firstAttribute="trailing" secondItem="InC-ox-2JZ" secondAttribute="trailing" constant="8" id="t4o-TZ-F5k"/>
+                                    <constraint firstItem="XDt-g0-WAI" firstAttribute="top" secondItem="I8c-6a-37S" secondAttribute="bottom" constant="7" id="tjv-9O-uhJ"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Header" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="cF2-Le-7mQ">
@@ -139,11 +139,11 @@
                     <connections>
                         <outlet property="dataLabel" destination="cF2-Le-7mQ" id="3EH-BK-JV6"/>
                         <outlet property="imperialButton" destination="SPJ-Ys-oDO" id="nYh-W9-yfc"/>
-                        <outlet property="imperialButtonTopConstraint" destination="dIE-vv-88i" id="NPK-GU-Ytt"/>
                         <outlet property="imperialTextField" destination="InC-ox-2JZ" id="P35-M4-Kdy"/>
+                        <outlet property="imperialTextFieldTopConstraint" destination="1Cf-gF-iaD" id="a3L-Vc-XlV"/>
                         <outlet property="siButton" destination="I8c-6a-37S" id="dCr-cv-Yjb"/>
-                        <outlet property="siButtonTopContstraint" destination="Sdw-MK-E2Y" id="Dpc-7r-fIl"/>
                         <outlet property="siTextField" destination="XDt-g0-WAI" id="LYV-v0-gBw"/>
+                        <outlet property="siTextFieldTopConstraint" destination="KQT-Ux-2JI" id="9IL-cb-LGX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GmD-Rr-ZGN" sceneMemberID="firstResponder"/>
