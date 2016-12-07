@@ -507,13 +507,129 @@ struct Volume: Measurement {
     }
 }
 
+struct Area: Measurement {
+    var header: String {
+        return "Area"
+    }
+
+    var SIValues: [Dictionary<String, String>] {
+        return [["name": "Square Meter", "abbreviation": "m2"],
+                ["name": "Hectare", "abbreviation": "ha"],
+                ["name": "Square Kilometer", "abbreviation": "km2"]]
+    }
+
+    var imperialValues: [Dictionary<String, String>] {
+        return [["name": "Square Foot", "abbreviation": "f2"],
+                ["name": "Acre", "abbreviation": "ac"],
+                ["name": "Square Mile", "abbreviation": "mi2"]]
+    }
+
+    internal func convert(fromUnit: String, toUnit: String, fromValue: Double) -> Double {
+        switch fromUnit {
+        case "m2":
+            return convertSquareMeter(toUnit: toUnit, fromValue: fromValue)
+        case "ha":
+            return convertHectare(toUnit: toUnit, fromValue: fromValue)
+        case "km2":
+            return convertSquareKiloMeter(toUnit: toUnit, fromValue: fromValue)
+        case "f2":
+            return convertSquareFoot(toUnit: toUnit, fromValue: fromValue)
+        case "ac":
+            return convertAcre(toUnit: toUnit, fromValue: fromValue)
+        case "mi2":
+            return convertSquareMile(toUnit: toUnit, fromValue: fromValue)
+        default:
+            print("NO CONVERSION FOR \(fromUnit). Plz implement!")
+            return fromValue
+        }
+    }
+
+    func convertSquareMeter(toUnit: String, fromValue: Double) -> Double {
+        switch toUnit {
+        case "f2":
+            return fromValue * 10.7639
+        case "ac":
+            return fromValue * 0.000247105
+        case "mi2":
+            return fromValue * 3.861e-7
+        default:
+            return fromValue
+        }
+    }
+
+    func convertHectare(toUnit: String, fromValue: Double) -> Double {
+        switch toUnit {
+        case "f2":
+            return fromValue * 107639
+        case "ac":
+            return fromValue * 2.47105
+        case "mi2":
+            return fromValue * 0.00386102
+        default:
+            return fromValue
+        }
+    }
+
+    func convertSquareKiloMeter(toUnit: String, fromValue: Double) -> Double {
+        switch toUnit {
+        case "f2":
+            return fromValue * 1.076e+7
+        case "ac":
+            return fromValue * 247.105
+        case "mi2":
+            return fromValue * 0.386102
+        default:
+            return fromValue
+        }
+    }
+
+    func convertSquareFoot(toUnit: String, fromValue: Double) -> Double {
+        switch toUnit {
+        case "m2":
+            return fromValue * 0.092903
+        case "ha":
+            return fromValue * 9.2903e-6
+        case "km2":
+            return fromValue * 9.2903e-8
+        default:
+            return fromValue
+        }
+    }
+
+    func convertAcre(toUnit: String, fromValue: Double) -> Double {
+        switch toUnit {
+        case "m2":
+            return fromValue * 4046.86
+        case "ha":
+            return fromValue * 0.404686
+        case "km2":
+            return fromValue * 0.00404686
+        default:
+            return fromValue
+        }
+    }
+
+    func convertSquareMile(toUnit: String, fromValue: Double) -> Double {
+        switch toUnit {
+        case "m2":
+            return fromValue * 2.59e+6
+        case "ha":
+            return fromValue * 258.999
+        case "km2":
+            return fromValue * 2.58999
+        default:
+            return fromValue
+        }
+    }
+}
+
 class ModelController: NSObject, UIPageViewControllerDataSource {
 
     var pageData: [Measurement] = []
 
     override init() {
         super.init()
-        pageData = [Temperature(), Mass(), Length(), Volume()]
+        pageData = [Temperature(), Mass(), Length(), Volume(), Area()]
     }
 
     func viewControllerAtIndex(_ index: Int, storyboard: UIStoryboard) -> DataViewController? {
