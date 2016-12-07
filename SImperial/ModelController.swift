@@ -293,11 +293,15 @@ struct Volume: Measurement {
     }
 
     var imperialValues: [Dictionary<String, String>] {
-        return [["name": "US fluid Ounce", "abbreviation": "US fl.oz"],
+        return [["name": "US Teaspoon", "abbreviation": "US tsp"],
+                ["name": "US Tablespoon", "abbreviation": "US tbsp"],
+                ["name": "US fluid Ounce", "abbreviation": "US fl.oz"],
                 ["name": "US liquid Cup", "abbreviation": "US cup"],
                 ["name": "US liquid Pint", "abbreviation": "US pt"],
                 ["name": "US liquid Gallon", "abbreviation": "US gal"],
-                ["name": "Imperial fl. Ounce", "abbreviation": "fl.oz"],
+                ["name": "Imperial Teaspoon", "abbreviation": "tsp"],
+                ["name": "Imperial Tablespoon", "abbreviation": "tbsp"],
+                ["name": "Imperial fluid Ounce", "abbreviation": "fl.oz"],
                 ["name": "Imperial Cup", "abbreviation": "cup"],
                 ["name": "Imperial Pint", "abbreviation": "pt"],
                 ["name": "Imperial Gallon", "abbreviation": "gal"]]
@@ -311,6 +315,10 @@ struct Volume: Measurement {
             return convertDecilitre(toUnit: toUnit, fromValue: fromValue)
         case "l":
             return convertLitre(toUnit: toUnit, fromValue: fromValue)
+        case "US tsp":
+            return convertUSTeaspoon(toUnit: toUnit, fromValue: fromValue)
+        case "US tbsp":
+            return convertUSTablespoon(toUnit: toUnit, fromValue: fromValue)
         case "US fl.oz":
             return convertUSFluidOunce(toUnit: toUnit, fromValue: fromValue)
         case "US cup":
@@ -319,6 +327,10 @@ struct Volume: Measurement {
             return convertUSPint(toUnit: toUnit, fromValue: fromValue)
         case "US gal":
             return convertUSGallon(toUnit: toUnit, fromValue: fromValue)
+        case "tsp":
+            return convertTeaspoon(toUnit: toUnit, fromValue: fromValue)
+        case "tbsp":
+            return convertTablespoon(toUnit: toUnit, fromValue: fromValue)
         case "fl.oz":
             return convertFluidOunce(toUnit: toUnit, fromValue: fromValue)
         case "cup":
@@ -335,6 +347,10 @@ struct Volume: Measurement {
 
     func convertMillilitre(toUnit: String, fromValue: Double) -> Double {
         switch toUnit {
+        case "US tsp":
+            return fromValue * 0.202884
+        case "US tbsp":
+            return fromValue * 0.067628
         case "US fl.oz":
             return fromValue * 0.033814
         case "US cup":
@@ -343,6 +359,10 @@ struct Volume: Measurement {
             return fromValue * 0.00211338
         case "US gal":
             return fromValue * 0.000264172
+        case "tsp":
+            return fromValue * 0.168936
+        case "tbsp":
+            return fromValue * 0.0563121
         case "fl.oz":
             return fromValue * 0.0351951
         case "cup":
@@ -358,6 +378,10 @@ struct Volume: Measurement {
 
     func convertDecilitre(toUnit: String, fromValue: Double) -> Double {
         switch toUnit {
+        case "US tsp":
+            return fromValue * 20.2884
+        case "US tbsp":
+            return fromValue * 6.7628
         case "US fl.oz":
             return fromValue * 3.3814
         case "US cup":
@@ -366,6 +390,10 @@ struct Volume: Measurement {
             return fromValue * 0.211338
         case "US gal":
             return fromValue * 0.0264172
+        case "tsp":
+            return fromValue * 16.8936
+        case "tbsp":
+            return fromValue * 5.63121
         case "fl.oz":
             return fromValue * 3.51951
         case "cup":
@@ -381,6 +409,10 @@ struct Volume: Measurement {
 
     func convertLitre(toUnit: String, fromValue: Double) -> Double {
         switch toUnit {
+        case "US tsp":
+            return fromValue * 202.884
+        case "US tbsp":
+            return fromValue * 67.628
         case "US fl.oz":
             return fromValue * 33.814
         case "US cup":
@@ -389,6 +421,10 @@ struct Volume: Measurement {
             return fromValue * 2.11338
         case "US gal":
             return fromValue * 0.264172
+        case "tsp":
+            return fromValue * 168.936
+        case "tbsp":
+            return fromValue * 56.3121
         case "fl.oz":
             return fromValue * 35.1951
         case "cup":
@@ -397,6 +433,32 @@ struct Volume: Measurement {
             return fromValue * 1.75975
         case "gal":
             return fromValue * 0.219969
+        default:
+            return fromValue
+        }
+    }
+
+    func convertUSTeaspoon(toUnit: String, fromValue: Double) -> Double {
+        switch toUnit {
+        case "ml":
+            return fromValue * 4.92892
+        case "dl":
+            return fromValue * 0.0492892
+        case "l":
+            return fromValue * 0.00492892
+        default:
+            return fromValue
+        }
+    }
+
+    func convertUSTablespoon(toUnit: String, fromValue: Double) -> Double {
+        switch toUnit {
+        case "ml":
+            return fromValue * 14.7868
+        case "dl":
+            return fromValue * 0.147868
+        case "l":
+            return fromValue * 0.0147868
         default:
             return fromValue
         }
@@ -449,6 +511,32 @@ struct Volume: Measurement {
             return fromValue * 37.8541
         case "l":
             return fromValue * 3.78541
+        default:
+            return fromValue
+        }
+    }
+    
+    func convertTeaspoon(toUnit: String, fromValue: Double) -> Double {
+        switch toUnit {
+        case "ml":
+            return fromValue * 5.91939
+        case "dl":
+            return fromValue * 0.0591939
+        case "l":
+            return fromValue * 0.00591939
+        default:
+            return fromValue
+        }
+    }
+    
+    func convertTablespoon(toUnit: String, fromValue: Double) -> Double {
+        switch toUnit {
+        case "ml":
+            return fromValue * 17.7582
+        case "dl":
+            return fromValue * 0.177582
+        case "l":
+            return fromValue * 0.0177582
         default:
             return fromValue
         }
