@@ -43,9 +43,9 @@
                                 <rect key="frame" x="20" y="132" width="335" height="515"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="InC-ox-2JZ">
-                                        <rect key="frame" x="230" y="113" width="97" height="30"/>
+                                        <rect key="frame" x="187" y="113" width="140" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="97" id="MqS-fJ-0mT"/>
+                                            <constraint firstAttribute="width" constant="140" id="JR6-NA-6ih"/>
                                             <constraint firstAttribute="height" constant="30" id="erd-st-40a"/>
                                         </constraints>
                                         <nil key="textColor"/>
@@ -57,10 +57,10 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XDt-g0-WAI">
-                                        <rect key="frame" x="8" y="113" width="97" height="30"/>
+                                        <rect key="frame" x="8" y="113" width="140" height="30"/>
                                         <constraints>
+                                            <constraint firstAttribute="width" constant="140" id="41l-MK-qSl"/>
                                             <constraint firstAttribute="height" constant="30" id="rjV-bi-crj"/>
-                                            <constraint firstAttribute="width" constant="97" id="vAc-Vm-7dL"/>
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -71,10 +71,10 @@
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I8c-6a-37S">
-                                        <rect key="frame" x="8" y="73" width="97" height="33"/>
+                                        <rect key="frame" x="8" y="73" width="140" height="33"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="33" id="ZgK-qT-zCF"/>
-                                            <constraint firstAttribute="width" constant="97" id="umj-gv-l9e"/>
+                                            <constraint firstAttribute="width" constant="140" id="rUM-6d-YJg"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="siButton">
@@ -85,10 +85,10 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SPJ-Ys-oDO">
-                                        <rect key="frame" x="230" y="71" width="97" height="36"/>
+                                        <rect key="frame" x="187" y="71" width="140" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="36" id="DSl-6X-39d"/>
-                                            <constraint firstAttribute="width" constant="97" id="eLb-jk-njx"/>
+                                            <constraint firstAttribute="width" constant="140" id="p3V-OZ-IB2"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="imperialButton">
@@ -131,8 +131,10 @@
                     <connections>
                         <outlet property="dataLabel" destination="cF2-Le-7mQ" id="3EH-BK-JV6"/>
                         <outlet property="imperialButton" destination="SPJ-Ys-oDO" id="nYh-W9-yfc"/>
+                        <outlet property="imperialButtonTopConstraint" destination="dIE-vv-88i" id="NPK-GU-Ytt"/>
                         <outlet property="imperialTextField" destination="InC-ox-2JZ" id="P35-M4-Kdy"/>
                         <outlet property="siButton" destination="I8c-6a-37S" id="dCr-cv-Yjb"/>
+                        <outlet property="siButtonTopContstraint" destination="Sdw-MK-E2Y" id="Dpc-7r-fIl"/>
                         <outlet property="siTextField" destination="XDt-g0-WAI" id="LYV-v0-gBw"/>
                     </connections>
                 </viewController>

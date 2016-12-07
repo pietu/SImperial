@@ -9,7 +9,8 @@
 import UIKit
 
 class DataViewController: UIViewController, UIPopoverPresentationControllerDelegate {
-
+    @IBOutlet weak var siButtonTopContstraint: NSLayoutConstraint!
+    @IBOutlet weak var imperialButtonTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var imperialButton: UIButton!
     @IBOutlet weak var siButton: UIButton!
     @IBOutlet weak var dataLabel: UILabel!
@@ -52,8 +53,23 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
             self.siButton.setTitle("", for: .normal)
             self.imperialButton.setTitle("", for: .normal)
         }
+        determineLayout(orientation: UIApplication.shared.statusBarOrientation)
     }
     
+    func determineLayout(orientation: UIInterfaceOrientation) {
+        if UIInterfaceOrientationIsPortrait(orientation) {
+            self.siButtonTopContstraint.constant = 70
+            self.imperialButtonTopConstraint.constant = 70
+        } else {
+            self.siButtonTopContstraint.constant = 20
+            self.imperialButtonTopConstraint.constant = 20
+        }
+    }
+
+    override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
+        determineLayout(orientation: toInterfaceOrientation)
+    }
+
     public func unitSelected(isSIUnit: Bool, name: String) {
         if let measurement = self.dataObject {
             if (isSIUnit) {
