@@ -106,27 +106,32 @@
                                             <action selector="toButtonClick:" destination="S4R-Ja-viH" eventType="touchUpInside" id="Ty9-Eq-Xw6"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TaO-8c-mNH">
-                                        <rect key="frame" x="8" y="32" width="319" height="27"/>
-                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
-                                        <state key="normal" title="Switch"/>
-                                        <connections>
-                                            <action selector="onSwitchButtonClicked:" destination="S4R-Ja-viH" eventType="touchUpInside" id="uBd-t3-WBm"/>
-                                        </connections>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="hvQ-ZQ-gBx">
+                                        <rect key="frame" x="146" y="27" width="42" height="27"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TaO-8c-mNH">
+                                                <rect key="frame" x="0.0" y="0.0" width="42" height="27"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
+                                                <state key="normal" title="Switch"/>
+                                                <connections>
+                                                    <action selector="onSwitchButtonClicked:" destination="S4R-Ja-viH" eventType="touchUpInside" id="uBd-t3-WBm"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="InC-ox-2JZ" firstAttribute="top" secondItem="s1b-V9-EN7" secondAttribute="top" constant="113" id="1Cf-gF-iaD"/>
+                                    <constraint firstItem="hvQ-ZQ-gBx" firstAttribute="top" secondItem="s1b-V9-EN7" secondAttribute="top" constant="27" id="2Qt-Le-79P"/>
                                     <constraint firstItem="I8c-6a-37S" firstAttribute="leading" secondItem="s1b-V9-EN7" secondAttribute="leading" constant="8" id="3wI-4J-R02"/>
                                     <constraint firstItem="XDt-g0-WAI" firstAttribute="leading" secondItem="s1b-V9-EN7" secondAttribute="leading" constant="8" id="9bR-zb-HiG"/>
                                     <constraint firstAttribute="trailing" secondItem="SPJ-Ys-oDO" secondAttribute="trailing" constant="8" id="H45-oh-f44"/>
+                                    <constraint firstItem="hvQ-ZQ-gBx" firstAttribute="centerX" secondItem="s1b-V9-EN7" secondAttribute="centerX" id="Jjv-4y-np3"/>
                                     <constraint firstItem="XDt-g0-WAI" firstAttribute="top" secondItem="s1b-V9-EN7" secondAttribute="top" constant="113" id="KQT-Ux-2JI"/>
                                     <constraint firstItem="InC-ox-2JZ" firstAttribute="top" secondItem="SPJ-Ys-oDO" secondAttribute="bottom" constant="6" id="dI5-0m-hBt"/>
-                                    <constraint firstItem="TaO-8c-mNH" firstAttribute="leading" secondItem="s1b-V9-EN7" secondAttribute="leading" constant="8" id="iNG-11-yOQ"/>
                                     <constraint firstAttribute="trailing" secondItem="InC-ox-2JZ" secondAttribute="trailing" constant="8" id="t4o-TZ-F5k"/>
                                     <constraint firstItem="XDt-g0-WAI" firstAttribute="top" secondItem="I8c-6a-37S" secondAttribute="bottom" constant="7" id="tjv-9O-uhJ"/>
-                                    <constraint firstAttribute="trailing" secondItem="TaO-8c-mNH" secondAttribute="trailing" constant="8" id="ybx-Ds-4gZ"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Header" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="cF2-Le-7mQ">
@@ -140,7 +145,6 @@
                             <constraint firstAttribute="trailing" secondItem="s1b-V9-EN7" secondAttribute="trailing" constant="20" symbolic="YES" id="333-Jl-G0r"/>
                             <constraint firstItem="s1b-V9-EN7" firstAttribute="leading" secondItem="ZwX-cT-FIQ" secondAttribute="leading" constant="20" symbolic="YES" id="CIC-qa-9gW"/>
                             <constraint firstItem="cF2-Le-7mQ" firstAttribute="leading" secondItem="ZwX-cT-FIQ" secondAttribute="leading" constant="20" symbolic="YES" id="PnF-O8-Bso"/>
-                            <constraint firstItem="TaO-8c-mNH" firstAttribute="top" secondItem="cF2-Le-7mQ" secondAttribute="bottom" constant="65" id="WDC-nk-W8C"/>
                             <constraint firstAttribute="bottom" secondItem="s1b-V9-EN7" secondAttribute="bottom" constant="20" symbolic="YES" id="Xg4-Xc-7kb"/>
                             <constraint firstAttribute="trailing" secondItem="cF2-Le-7mQ" secondAttribute="trailing" constant="20" symbolic="YES" id="cCk-mG-gz5"/>
                             <constraint firstItem="cF2-Le-7mQ" firstAttribute="top" secondItem="fXf-Jd-eTc" secondAttribute="bottom" constant="51" id="m7P-Ly-7cQ"/>
@@ -181,7 +185,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UJw-NQ-qcy" id="RZL-tB-Tqc">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
