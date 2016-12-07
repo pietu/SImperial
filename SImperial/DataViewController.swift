@@ -40,7 +40,7 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
         super.viewWillAppear(animated)
         self.siButton.titleLabel?.textAlignment = NSTextAlignment.center
         self.imperialButton.titleLabel?.textAlignment = NSTextAlignment.center
-        if let measurement = dataObject {
+        if let measurement = self.dataObject {
             self.dataLabel!.text = measurement.header
             var siUnit: Dictionary<String,String> = [:]
             var imperialUnit: Dictionary<String,String> = [:]
@@ -50,12 +50,12 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
             } else {
                 siUnit = measurement.SIValues[0]
                 imperialUnit = measurement.imperialValues[0]
-                defaults.set(["siUnit": siUnit, "imperialUnit": imperialUnit], forKey: self.dataLabel!.text!)
+                self.defaults.set(["siUnit": siUnit, "imperialUnit": imperialUnit], forKey: self.dataLabel!.text!)
             }
             self.siButton.setTitle(siUnit["name"], for: .normal)
-            selectedSiUnit = siUnit["abbreviation"]
-            imperialButton.setTitle(imperialUnit["name"], for: .normal)
-            selectedImperialUnit = imperialUnit["abbreviation"]
+            self.selectedSiUnit = siUnit["abbreviation"]
+            self.imperialButton.setTitle(imperialUnit["name"], for: .normal)
+            self.selectedImperialUnit = imperialUnit["abbreviation"]
         } else {
             self.dataLabel!.text = ""
             self.siButton.setTitle("", for: .normal)
@@ -86,20 +86,20 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
                 })[0]
                 let defaultUnits = defaults.dictionary(forKey: self.dataLabel!.text!)
                 let imperialUnit = defaultUnits?["imperialUnit"] as! Dictionary<String, String>
-                defaults.set(["siUnit": siUnit, "imperialUnit": imperialUnit], forKey: self.dataLabel!.text!)
+                self.defaults.set(["siUnit": siUnit, "imperialUnit": imperialUnit], forKey: self.dataLabel!.text!)
                 self.siButton.setTitle(name, for: .normal)
                 self.selectedSiUnit = siUnit["abbreviation"]
-                triggerSIValueChange()
+                self.triggerSIValueChange()
             } else {
                 let imperialUnit = measurement.imperialValues.filter({(unit: Dictionary<String,String>) -> Bool in
                     return unit["name"] == name
                 })[0]
                 let defaultUnits = defaults.dictionary(forKey: self.dataLabel!.text!)
                 let siUnit = defaultUnits?["siUnit"] as! Dictionary<String, String>
-                defaults.set(["siUnit": siUnit, "imperialUnit": imperialUnit], forKey: self.dataLabel!.text!)
+                self.defaults.set(["siUnit": siUnit, "imperialUnit": imperialUnit], forKey: self.dataLabel!.text!)
                 self.imperialButton.setTitle(name, for: .normal)
                 self.selectedImperialUnit = imperialUnit["abbreviation"]
-                triggerImperialValueChange()
+                self.triggerImperialValueChange()
             }
         }
         
@@ -129,70 +129,70 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
     }
     
     @IBAction func siButtonClick(_ sender: UIButton) {
-        if let measurement = dataObject {
+        if let measurement = self.dataObject {
             if measurement.SIValues.count > 1 {
                 unitSelections = measurement.SIValues
-                launchPopOver(sender, true)
+                self.launchPopOver(sender, true)
             }
         }
     }
 
     @IBAction func imperialButtonClick(_ sender: UIButton) {
-        if let measurement = dataObject {
+        if let measurement = self.dataObject {
             if measurement.imperialValues.count > 1 {
                 unitSelections = measurement.imperialValues
-                launchPopOver(sender, false)
+                self.launchPopOver(sender, false)
             }
         }
     }
     
     internal func triggerSIValueChange() {
-        if let measurement = dataObject {
-            if let siText = siTextField.text {
+        if let measurement = self.dataObject {
+            if let siText = self.siTextField.text {
                 if let siValue = Double(siText) {
                     let imperialValue = measurement.convert(fromUnit: self.selectedSiUnit!, toUnit: self.selectedImperialUnit!, fromValue: siValue)
-                    imperialTextField.text = String(round(100 * imperialValue) / 100)
+                    self.imperialTextField.text = String(round(100 * imperialValue) / 100)
                     
                 } else {
-                    imperialTextField.text = ""
+                    self.imperialTextField.text = ""
                 }
             } else {
-                imperialTextField.text = ""
+                self.imperialTextField.text = ""
             }
         }
     }
     
     internal func triggerImperialValueChange() {
-        if let measurement = dataObject {
-            if let imperialText = imperialTextField.text {
+        if let measurement = self.dataObject {
+            if let imperialText = self.imperialTextField.text {
                 if let imperialValue = Double(imperialText) {
                     let siValue = measurement.convert(fromUnit: self.selectedImperialUnit!, toUnit: self.selectedSiUnit!, fromValue: imperialValue)
-                    siTextField.text = String(round(100 * siValue) / 100)
+                    self.siTextField.text = String(round(100 * siValue) / 100)
                     
                 } else {
-                    siTextField.text = ""
+                    self.siTextField.text = ""
                 }
             } else {
-                siTextField.text = ""
+                self.siTextField.text = ""
             }
         }
     }
     
     @IBAction func onSiChanged(_ sender: Any) {
-        triggerSIValueChange()
+        self.triggerSIValueChange()
     }
 
     @IBAction func onImperialChanged(_ sender: Any) {
-        triggerImperialValueChange()
+        self.triggerImperialValueChange()
     }
 
     @IBAction func onSiTouchDown(_ sender: Any) {
-        siTextField.becomeFirstResponder()
-        siTextField.selectedTextRange =  siTextField.textRange(from: siTextField.beginningOfDocument, to: siTextField.endOfDocument)
+        self.siTextField.becomeFirstResponder()
+        self.siTextField.selectedTextRange = self.siTextField.textRange(from: self.siTextField.beginningOfDocument, to: self.siTextField.endOfDocument)
     }
 
     @IBAction func onImperialTouchDown(_ sender: Any) {
-        imperialTextField.becomeFirstResponder()
-        imperialTextField.selectedTextRange =  imperialTextField.textRange(from: imperialTextField.beginningOfDocument, to: imperialTextField.endOfDocument)
+        self.imperialTextField.becomeFirstResponder()
+        self.imperialTextField.selectedTextRange = self.imperialTextField.textRange(from: self.imperialTextField.beginningOfDocument, to: self.imperialTextField.endOfDocument)
     }
 }
