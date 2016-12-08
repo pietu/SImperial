@@ -36,9 +36,9 @@ class PopOverViewController: UIViewController, UITableViewDelegate, UITableViewD
         if let selections = self.unitSelections {
             if let parent = self.parentController {
                 if self.isFromUnit {
-                    parent.fromUnitSelected(name: selections[indexPath.row]["name"]!)
+                    parent.fromUnitSelected(fromUnit: selections[indexPath.row])
                 } else {
-                    parent.toUnitSelected(name: selections[indexPath.row]["name"]!)
+                    parent.toUnitSelected(toUnit: selections[indexPath.row])
                 }
             }
         }

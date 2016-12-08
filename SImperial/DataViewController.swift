@@ -93,26 +93,20 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
         determineLayout(orientation: toInterfaceOrientation)
     }
 
-    func fromUnitSelected(name: String) {
-        let fromUnit = self.fromValues.filter({(unit: Dictionary<String,String>) -> Bool in
-            return unit["name"] == name
-        })[0]
+    func fromUnitSelected(fromUnit: Dictionary<String,String>) {
         let defaultUnits = defaults.dictionary(forKey: self.dataLabel!.text!)
         let toUnit = defaultUnits?["toUnit"] as! Dictionary<String, String>
         self.defaults.set(["fromUnit": fromUnit, "toUnit": toUnit], forKey: self.dataLabel!.text!)
-        self.fromButton.setTitle(name, for: .normal)
+        self.fromButton.setTitle(fromUnit["name"]!, for: .normal)
         self.selectedFromUnit = fromUnit["abbreviation"]
         self.triggerFromValueChange()
     }
 
-    public func toUnitSelected(name: String) {
-        let toUnit = self.toValues.filter({(unit: Dictionary<String,String>) -> Bool in
-            return unit["name"] == name
-        })[0]
+    public func toUnitSelected(toUnit: Dictionary<String,String>) {
         let defaultUnits = defaults.dictionary(forKey: self.dataLabel!.text!)
         let fromUnit = defaultUnits?["fromUnit"] as! Dictionary<String, String>
         self.defaults.set(["fromUnit": fromUnit, "toUnit": toUnit], forKey: self.dataLabel!.text!)
-        self.toButton.setTitle(name, for: .normal)
+        self.toButton.setTitle(toUnit["name"]!, for: .normal)
         self.selectedToUnit = toUnit["abbreviation"]
         self.triggerFromValueChange()
     }
