@@ -119,16 +119,44 @@
                                             </button>
                                         </subviews>
                                     </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BOe-Nm-rye">
+                                        <rect key="frame" x="8" y="43" width="130" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="AQL-fE-wJz"/>
+                                            <constraint firstAttribute="width" constant="130" id="RPJ-RF-eIy"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="43"/>
+                                        <state key="normal" title="-"/>
+                                        <connections>
+                                            <action selector="fromMinusButtonClick:" destination="S4R-Ja-viH" eventType="touchUpInside" id="EQO-4O-UpK"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IlN-4v-8iH">
+                                        <rect key="frame" x="187" y="43" width="140" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="140" id="BYn-sl-zJP"/>
+                                            <constraint firstAttribute="height" constant="30" id="ZfD-A4-1rb"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="43"/>
+                                        <state key="normal" title="-"/>
+                                        <connections>
+                                            <action selector="toMinusButtonClick:" destination="S4R-Ja-viH" eventType="touchUpInside" id="wRh-vm-wzX"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="InC-ox-2JZ" firstAttribute="top" secondItem="s1b-V9-EN7" secondAttribute="top" constant="113" id="1Cf-gF-iaD"/>
+                                    <constraint firstItem="I8c-6a-37S" firstAttribute="top" secondItem="BOe-Nm-rye" secondAttribute="bottom" id="1Nu-5K-2lq"/>
+                                    <constraint firstAttribute="trailing" secondItem="IlN-4v-8iH" secondAttribute="trailing" constant="8" id="2GU-Sn-2BZ"/>
                                     <constraint firstItem="hvQ-ZQ-gBx" firstAttribute="top" secondItem="s1b-V9-EN7" secondAttribute="top" constant="27" id="2Qt-Le-79P"/>
                                     <constraint firstItem="I8c-6a-37S" firstAttribute="leading" secondItem="s1b-V9-EN7" secondAttribute="leading" constant="8" id="3wI-4J-R02"/>
                                     <constraint firstItem="XDt-g0-WAI" firstAttribute="leading" secondItem="s1b-V9-EN7" secondAttribute="leading" constant="8" id="9bR-zb-HiG"/>
                                     <constraint firstAttribute="trailing" secondItem="SPJ-Ys-oDO" secondAttribute="trailing" constant="8" id="H45-oh-f44"/>
                                     <constraint firstItem="hvQ-ZQ-gBx" firstAttribute="centerX" secondItem="s1b-V9-EN7" secondAttribute="centerX" id="Jjv-4y-np3"/>
                                     <constraint firstItem="XDt-g0-WAI" firstAttribute="top" secondItem="s1b-V9-EN7" secondAttribute="top" constant="113" id="KQT-Ux-2JI"/>
+                                    <constraint firstItem="BOe-Nm-rye" firstAttribute="leading" secondItem="s1b-V9-EN7" secondAttribute="leading" constant="8" id="Kag-Os-426"/>
+                                    <constraint firstItem="SPJ-Ys-oDO" firstAttribute="top" secondItem="IlN-4v-8iH" secondAttribute="bottom" constant="-2" id="aLe-La-IVd"/>
                                     <constraint firstItem="InC-ox-2JZ" firstAttribute="top" secondItem="SPJ-Ys-oDO" secondAttribute="bottom" constant="6" id="dI5-0m-hBt"/>
                                     <constraint firstAttribute="trailing" secondItem="InC-ox-2JZ" secondAttribute="trailing" constant="8" id="t4o-TZ-F5k"/>
                                     <constraint firstItem="XDt-g0-WAI" firstAttribute="top" secondItem="I8c-6a-37S" secondAttribute="bottom" constant="7" id="tjv-9O-uhJ"/>
@@ -154,9 +182,11 @@
                     <connections>
                         <outlet property="dataLabel" destination="cF2-Le-7mQ" id="3EH-BK-JV6"/>
                         <outlet property="fromButton" destination="I8c-6a-37S" id="dCr-cv-Yjb"/>
+                        <outlet property="fromMinusButton" destination="BOe-Nm-rye" id="Fha-Ng-3fu"/>
                         <outlet property="fromTextField" destination="XDt-g0-WAI" id="LYV-v0-gBw"/>
                         <outlet property="fromTextFieldTopConstraint" destination="KQT-Ux-2JI" id="9IL-cb-LGX"/>
                         <outlet property="toButton" destination="SPJ-Ys-oDO" id="nYh-W9-yfc"/>
+                        <outlet property="toMinusButton" destination="IlN-4v-8iH" id="WAw-h8-LW3"/>
                         <outlet property="toTextField" destination="InC-ox-2JZ" id="P35-M4-Kdy"/>
                         <outlet property="toTextFieldTopConstraint" destination="1Cf-gF-iaD" id="a3L-Vc-XlV"/>
                     </connections>
@@ -185,7 +215,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UJw-NQ-qcy" id="RZL-tB-Tqc">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>

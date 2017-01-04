@@ -9,6 +9,8 @@
 import UIKit
 
 class DataViewController: UIViewController, UIPopoverPresentationControllerDelegate {
+  @IBOutlet weak var fromMinusButton: UIButton!
+  @IBOutlet weak var toMinusButton: UIButton!
   @IBOutlet weak var toTextFieldTopConstraint: NSLayoutConstraint!
   @IBOutlet weak var fromTextFieldTopConstraint: NSLayoutConstraint!
   @IBOutlet weak var toButton: UIButton!
@@ -101,6 +103,13 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
       self.selectedToUnit = toUnit[toUnitName!]
       self.toValues = self.getValuesBy(dimension: selectedToUnit!, SIValues: measurement.SIValues, imperialValues: measurement.imperialValues)
       self.fromValues = self.getValuesBy(dimension: selectedFromUnit!, SIValues: measurement.SIValues, imperialValues: measurement.imperialValues)
+      if (measurement.hasMinusValues) {
+        fromMinusButton.isHidden = false
+        toMinusButton.isHidden = false
+      } else {
+        fromMinusButton.isHidden = true
+        toMinusButton.isHidden = true
+      }
     } else {
       self.dataLabel!.text = ""
       self.fromButton.setTitle("", for: .normal)
@@ -240,6 +249,30 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
       self.fromButton.setTitle(formerToUnit.keys.first, for: .normal)
       self.toButton.setTitle(formerFromUnit.keys.first, for: .normal)
       self.triggerFromValueChange()
+    }
+  }
+
+  @IBAction func fromMinusButtonClick(_ sender: Any) {
+    if var text = fromTextField.text {
+      if text.hasPrefix("-") {
+        text = text.replacingOccurrences(of: "-", with: "")
+      } else {
+        text = "-\(text)"
+      }
+      fromTextField.text = text
+      self.triggerFromValueChange()
+    }
+  }
+
+  @IBAction func toMinusButtonClick(_ sender: Any) {
+    if var text = toTextField.text {
+      if text.hasPrefix("-") {
+        text = text.replacingOccurrences(of: "-", with: "")
+      } else {
+        text = "-\(text)"
+      }
+      toTextField.text = text
+      self.triggerToValueChange()
     }
   }
 

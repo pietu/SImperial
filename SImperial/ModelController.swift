@@ -13,6 +13,7 @@ protocol MyMeasurement {
   var header: String { get }
   var SIValues: [Dictionary<String, Dimension>] { get }
   var imperialValues: [Dictionary<String, Dimension>] { get }
+  var hasMinusValues: Bool { get }
   func convert(fromUnit: Dimension, toUnit: Dimension, fromValue: Double) -> Double
 }
 
@@ -20,6 +21,8 @@ struct Temperature: MyMeasurement {
     var header: String {
         return "Temperature"
     }
+
+    var hasMinusValues: Bool = true
 
     var SIValues: [Dictionary<String, Dimension>] {
         return [["Celcius": UnitTemperature.celsius]]
@@ -38,6 +41,8 @@ struct Mass: MyMeasurement {
     var header: String {
         return "Mass"
     }
+
+    var hasMinusValues: Bool = false
 
     var SIValues: [Dictionary<String, Dimension>] {
         return [["Grams": UnitMass.grams],
@@ -59,6 +64,8 @@ struct Length: MyMeasurement {
     var header: String {
         return "Length"
     }
+
+    var hasMinusValues: Bool = false
 
     var SIValues: [Dictionary<String, Dimension>] {
         return [["Millimeters": UnitLength.millimeters],
@@ -83,6 +90,8 @@ struct Volume: MyMeasurement {
     var header: String {
         return "Volume"
     }
+
+    var hasMinusValues: Bool = false
 
     var SIValues: [Dictionary<String, Dimension>] {
         return [["Milliliters": UnitVolume.milliliters],
@@ -117,6 +126,8 @@ struct Area: MyMeasurement {
     var header: String {
         return "Area"
     }
+
+    var hasMinusValues: Bool = false
 
     var SIValues: [Dictionary<String, Dimension>] {
         return [["Square Meters": UnitArea.squareMeters],
