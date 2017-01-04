@@ -110,9 +110,9 @@
                                         <rect key="frame" x="139" y="0.0" width="36" height="36"/>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BOe-Nm-rye">
-                                        <rect key="frame" x="8" y="43" width="130" height="30"/>
+                                        <rect key="frame" x="8" y="53" width="130" height="20"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="AQL-fE-wJz"/>
+                                            <constraint firstAttribute="height" constant="20" id="AQL-fE-wJz"/>
                                             <constraint firstAttribute="width" constant="130" id="RPJ-RF-eIy"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="43"/>
@@ -122,10 +122,10 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IlN-4v-8iH">
-                                        <rect key="frame" x="187" y="43" width="140" height="30"/>
+                                        <rect key="frame" x="187" y="53" width="140" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="140" id="BYn-sl-zJP"/>
-                                            <constraint firstAttribute="height" constant="30" id="ZfD-A4-1rb"/>
+                                            <constraint firstAttribute="height" constant="20" id="ZfD-A4-1rb"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="43"/>
                                         <state key="normal" title="-"/>
