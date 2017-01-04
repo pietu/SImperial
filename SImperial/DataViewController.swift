@@ -31,8 +31,8 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
     let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(DataViewController.dismissKeyboard))
     self.view.addGestureRecognizer(tap)
     let layer = CAGradientLayer()
-    let topColor = UIColor(red: (65/255.0), green: (252/255.0), blue: (186/255.0), alpha: 1)
-    let bottomColor = UIColor(red: (67/255.0), green: (221/255.0), blue: (252/255.0), alpha: 1)
+    let topColor = UIColor(red: (65/255.0), green: (252/255.0), blue: (186/255.0), alpha: 0.8)
+    let bottomColor = UIColor(red: (67/255.0), green: (221/255.0), blue: (252/255.0), alpha: 0.3)
     layer.frame = self.view.bounds
     layer.colors = [topColor.cgColor, bottomColor.cgColor]
     layer.startPoint = CGPoint(x: 0, y: 0.5)
