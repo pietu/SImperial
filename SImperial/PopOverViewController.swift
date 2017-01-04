@@ -10,7 +10,7 @@ import UIKit
 
 class PopOverViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var isFromUnit: Bool = false
-    var unitSelections: [Dictionary<String,String>]? = nil
+    var unitSelections: [Dictionary<String,Dimension>]? = nil
     var parentController: DataViewController? = nil
     
     internal func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -25,7 +25,7 @@ class PopOverViewController: UIViewController, UITableViewDelegate, UITableViewD
         let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "unitCell")
         cell.textLabel?.font = UIFont(name: "Montserrat-Regular", size: 17)
         if let selections = self.unitSelections {
-            cell.textLabel?.text = selections[indexPath.row]["name"]
+            cell.textLabel?.text = selections[indexPath.row].keys.first
         } else {
             cell.textLabel?.text = "No content available"
         }
