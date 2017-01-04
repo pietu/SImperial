@@ -46,8 +46,8 @@ struct Mass: MyMeasurement {
     }
 
     var imperialValues: [Dictionary<String, Dimension>] {
-        return [["Pounds": UnitMass.pounds],
-                ["Ounces": UnitMass.ounces]]
+        return [["Ounces": UnitMass.ounces],
+                ["Pounds": UnitMass.pounds]]
     }
 
     internal func convert(fromUnit: Dimension, toUnit: Dimension, fromValue: Double) -> Double {
