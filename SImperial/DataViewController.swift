@@ -29,7 +29,15 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
   override func viewDidLoad() {
     super.viewDidLoad()
     let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(DataViewController.dismissKeyboard))
-    view.addGestureRecognizer(tap)
+    self.view.addGestureRecognizer(tap)
+    let layer = CAGradientLayer()
+    let topColor = UIColor(red: (65/255.0), green: (252/255.0), blue: (186/255.0), alpha: 1)
+    let bottomColor = UIColor(red: (67/255.0), green: (221/255.0), blue: (252/255.0), alpha: 1)
+    layer.frame = self.view.bounds
+    layer.colors = [topColor.cgColor, bottomColor.cgColor]
+    layer.startPoint = CGPoint(x: 0, y: 0.5)
+    layer.endPoint = CGPoint(x: 1.0, y: 0.5)
+    self.view.layer.insertSublayer(layer, at: 0)
   }
 
   func dismissKeyboard() {
@@ -122,10 +130,10 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
     if UIInterfaceOrientationIsPortrait(orientation) {
       self.fromTextFieldTopConstraint.constant = 113
       self.toTextFieldTopConstraint.constant = 113
-      } else {
-        self.fromTextFieldTopConstraint.constant = 63
-        self.toTextFieldTopConstraint.constant = 63
-      }
+    } else {
+      self.fromTextFieldTopConstraint.constant = 63
+      self.toTextFieldTopConstraint.constant = 63
+    }
   }
 
   override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
