@@ -48,7 +48,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s1b-V9-EN7">
-                                <rect key="frame" x="20" y="128.5" width="335" height="518.5"/>
+                                <rect key="frame" x="20" y="129" width="335" height="518"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="InC-ox-2JZ">
                                         <rect key="frame" x="187" y="113" width="140" height="60"/>
@@ -106,18 +106,8 @@
                                             <action selector="toButtonClick:" destination="S4R-Ja-viH" eventType="touchUpInside" id="Ty9-Eq-Xw6"/>
                                         </connections>
                                     </button>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="hvQ-ZQ-gBx">
-                                        <rect key="frame" x="146" y="27" width="42" height="27"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TaO-8c-mNH">
-                                                <rect key="frame" x="0.0" y="0.0" width="42" height="27"/>
-                                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
-                                                <state key="normal" title="Switch"/>
-                                                <connections>
-                                                    <action selector="onSwitchButtonClicked:" destination="S4R-Ja-viH" eventType="touchUpInside" id="uBd-t3-WBm"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="hvQ-ZQ-gBx">
+                                        <rect key="frame" x="139" y="0.0" width="36" height="36"/>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BOe-Nm-rye">
                                         <rect key="frame" x="8" y="43" width="130" height="30"/>
@@ -143,6 +133,27 @@
                                             <action selector="toMinusButtonClick:" destination="S4R-Ja-viH" eventType="touchUpInside" id="wRh-vm-wzX"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TaO-8c-mNH">
+                                        <rect key="frame" x="149" y="17" width="36" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="36" id="FgS-D5-5vi"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="36" id="UFG-1x-wTl"/>
+                                            <constraint firstAttribute="height" constant="36" id="aMZ-ah-bUe"/>
+                                            <constraint firstAttribute="width" constant="36" id="mY9-D1-rXw"/>
+                                        </constraints>
+                                        <size key="titleShadowOffset" width="3" height="3"/>
+                                        <state key="normal" title="Switch" image="switch.png"/>
+                                        <state key="selected">
+                                            <color key="titleShadowColor" red="0.74136265082956254" green="0.74136265082956254" blue="0.74136265082956254" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <state key="highlighted" image="switch.png">
+                                            <color key="titleColor" red="0.9981935803167421" green="0.9981935803167421" blue="0.9981935803167421" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" red="0.68627450980392157" green="0.68627450980392157" blue="0.68627450980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onSwitchButtonClicked:" destination="S4R-Ja-viH" eventType="touchUpInside" id="uBd-t3-WBm"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -157,13 +168,14 @@
                                     <constraint firstItem="XDt-g0-WAI" firstAttribute="top" secondItem="s1b-V9-EN7" secondAttribute="top" constant="113" id="KQT-Ux-2JI"/>
                                     <constraint firstItem="BOe-Nm-rye" firstAttribute="leading" secondItem="s1b-V9-EN7" secondAttribute="leading" constant="8" id="Kag-Os-426"/>
                                     <constraint firstItem="SPJ-Ys-oDO" firstAttribute="top" secondItem="IlN-4v-8iH" secondAttribute="bottom" constant="-2" id="aLe-La-IVd"/>
+                                    <constraint firstItem="TaO-8c-mNH" firstAttribute="centerX" secondItem="s1b-V9-EN7" secondAttribute="centerX" id="aQn-5K-XcK"/>
                                     <constraint firstItem="InC-ox-2JZ" firstAttribute="top" secondItem="SPJ-Ys-oDO" secondAttribute="bottom" constant="6" id="dI5-0m-hBt"/>
                                     <constraint firstAttribute="trailing" secondItem="InC-ox-2JZ" secondAttribute="trailing" constant="8" id="t4o-TZ-F5k"/>
                                     <constraint firstItem="XDt-g0-WAI" firstAttribute="top" secondItem="I8c-6a-37S" secondAttribute="bottom" constant="7" id="tjv-9O-uhJ"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Header" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="cF2-Le-7mQ">
-                                <rect key="frame" x="20" y="71" width="335" height="24.5"/>
+                                <rect key="frame" x="20" y="71" width="335" height="25"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="20"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -175,6 +187,7 @@
                             <constraint firstItem="cF2-Le-7mQ" firstAttribute="leading" secondItem="ZwX-cT-FIQ" secondAttribute="leading" constant="20" symbolic="YES" id="PnF-O8-Bso"/>
                             <constraint firstAttribute="bottom" secondItem="s1b-V9-EN7" secondAttribute="bottom" constant="20" symbolic="YES" id="Xg4-Xc-7kb"/>
                             <constraint firstAttribute="trailing" secondItem="cF2-Le-7mQ" secondAttribute="trailing" constant="20" symbolic="YES" id="cCk-mG-gz5"/>
+                            <constraint firstItem="TaO-8c-mNH" firstAttribute="top" secondItem="fXf-Jd-eTc" secondAttribute="bottom" constant="126" id="lLc-oL-4O1"/>
                             <constraint firstItem="cF2-Le-7mQ" firstAttribute="top" secondItem="fXf-Jd-eTc" secondAttribute="bottom" constant="51" id="m7P-Ly-7cQ"/>
                             <constraint firstItem="s1b-V9-EN7" firstAttribute="top" secondItem="cF2-Le-7mQ" secondAttribute="bottom" constant="33" id="wVq-vX-bgQ"/>
                         </constraints>
@@ -246,4 +259,7 @@
             <point key="canvasLocation" x="1456.8" y="-243.32833583208398"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="switch.png" width="76" height="76"/>
+    </resources>
 </document>
