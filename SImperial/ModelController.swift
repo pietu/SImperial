@@ -41,7 +41,8 @@ struct Mass: MyMeasurement {
 
     var SIValues: [Dictionary<String, Dimension>] {
         return [["Grams": UnitMass.grams],
-                ["Kilograms": UnitMass.kilograms]]
+                ["Kilograms": UnitMass.kilograms],
+                ["Metric tons": UnitMass.metricTons]]
     }
 
     var imperialValues: [Dictionary<String, Dimension>] {
@@ -86,7 +87,8 @@ struct Volume: MyMeasurement {
     var SIValues: [Dictionary<String, Dimension>] {
         return [["Milliliters": UnitVolume.milliliters],
                 ["Deciliters": UnitVolume.deciliters],
-                ["Liters": UnitVolume.liters]]
+                ["Liters": UnitVolume.liters],
+                ["Cubic Meters": UnitVolume.cubicMeters]]
     }
 
     var imperialValues: [Dictionary<String, Dimension>] {
@@ -95,12 +97,14 @@ struct Volume: MyMeasurement {
                 ["US fluid Ounces": UnitVolume.fluidOunces],
                 ["US liquid Cups": UnitVolume.cups],
                 ["US liquid Pints": UnitVolume.pints],
+                ["US Quarts": UnitVolume.quarts],
                 ["US liquid Gallons": UnitVolume.gallons],
+                ["Cubic Feet": UnitVolume.cubicFeet],
                 ["Imperial Teaspoons": UnitVolume.imperialTeaspoons],
                 ["Imperial Tablespoons": UnitVolume.imperialTablespoons],
                 ["Imperial fluid Ounces": UnitVolume.imperialFluidOunces],
-                ["Metric Cups": UnitVolume.metricCups],
                 ["Imperial Pints": UnitVolume.imperialPints],
+                ["Imperial Quarts": UnitVolume.imperialQuarts],
                 ["Imperial Gallons": UnitVolume.imperialGallons]]
     }
 
@@ -116,6 +120,7 @@ struct Area: MyMeasurement {
 
     var SIValues: [Dictionary<String, Dimension>] {
         return [["Square Meters": UnitArea.squareMeters],
+                ["Ares": UnitArea.ares],
                 ["Hectares": UnitArea.hectares],
                 ["Square Kilometers": UnitArea.squareKilometers]]
     }
