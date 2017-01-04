@@ -40,13 +40,13 @@ struct Mass: MyMeasurement {
     }
 
     var SIValues: [Dictionary<String, Dimension>] {
-        return [["Gram": UnitMass.grams],
-                ["Kilogram": UnitMass.kilograms]]
+        return [["Grams": UnitMass.grams],
+                ["Kilograms": UnitMass.kilograms]]
     }
 
     var imperialValues: [Dictionary<String, Dimension>] {
-        return [["Pound": UnitMass.pounds],
-                ["Ounce": UnitMass.ounces]]
+        return [["Pounds": UnitMass.pounds],
+                ["Ounces": UnitMass.ounces]]
     }
 
     internal func convert(fromUnit: Dimension, toUnit: Dimension, fromValue: Double) -> Double {
@@ -60,17 +60,17 @@ struct Length: MyMeasurement {
     }
 
     var SIValues: [Dictionary<String, Dimension>] {
-        return [["Millimeter": UnitLength.millimeters],
-                ["Centimeter": UnitLength.centimeters],
-                ["Meter": UnitLength.meters],
-                ["Kilometer": UnitLength.kilometers]]
+        return [["Millimeters": UnitLength.millimeters],
+                ["Centimeters": UnitLength.centimeters],
+                ["Meters": UnitLength.meters],
+                ["Kilometers": UnitLength.kilometers]]
     }
 
     var imperialValues: [Dictionary<String, Dimension>] {
-        return [["Inch": UnitLength.inches],
-                ["Foot": UnitLength.feet],
-                ["Yard": UnitLength.yards],
-                ["Mile": UnitLength.miles]]
+        return [["Inches": UnitLength.inches],
+                ["Feet": UnitLength.feet],
+                ["Yards": UnitLength.yards],
+                ["Miles": UnitLength.miles]]
     }
 
     internal func convert(fromUnit: Dimension, toUnit: Dimension, fromValue: Double) -> Double {
@@ -84,24 +84,24 @@ struct Volume: MyMeasurement {
     }
 
     var SIValues: [Dictionary<String, Dimension>] {
-        return [["Millilitre": UnitVolume.milliliters],
-                ["Decilitre": UnitVolume.deciliters],
-                ["Litre": UnitVolume.liters]]
+        return [["Milliliters": UnitVolume.milliliters],
+                ["Deciliters": UnitVolume.deciliters],
+                ["Liters": UnitVolume.liters]]
     }
 
     var imperialValues: [Dictionary<String, Dimension>] {
-        return [["US Teaspoon": UnitVolume.teaspoons],
-                ["US Tablespoon": UnitVolume.tablespoons],
-                ["US fluid Ounce": UnitVolume.fluidOunces],
-                ["US liquid Cup": UnitVolume.cups],
-                ["US liquid Pint": UnitVolume.pints],
-                ["US liquid Gallon": UnitVolume.gallons],
-                ["Imperial Teaspoon": UnitVolume.imperialTeaspoons],
-                ["Imperial Tablespoon": UnitVolume.imperialTablespoons],
-                ["Imperial fluid Ounce": UnitVolume.imperialFluidOunces],
-                ["Metric Cup": UnitVolume.metricCups],
-                ["Imperial Pint": UnitVolume.imperialPints],
-                ["Imperial Gallon": UnitVolume.imperialGallons]]
+        return [["US Teaspoons": UnitVolume.teaspoons],
+                ["US Tablespoons": UnitVolume.tablespoons],
+                ["US fluid Ounces": UnitVolume.fluidOunces],
+                ["US liquid Cups": UnitVolume.cups],
+                ["US liquid Pints": UnitVolume.pints],
+                ["US liquid Gallons": UnitVolume.gallons],
+                ["Imperial Teaspoons": UnitVolume.imperialTeaspoons],
+                ["Imperial Tablespoons": UnitVolume.imperialTablespoons],
+                ["Imperial fluid Ounces": UnitVolume.imperialFluidOunces],
+                ["Metric Cups": UnitVolume.metricCups],
+                ["Imperial Pints": UnitVolume.imperialPints],
+                ["Imperial Gallons": UnitVolume.imperialGallons]]
     }
 
     internal func convert(fromUnit: Dimension, toUnit: Dimension, fromValue: Double) -> Double {
@@ -115,15 +115,15 @@ struct Area: MyMeasurement {
     }
 
     var SIValues: [Dictionary<String, Dimension>] {
-        return [["Square Meter": UnitArea.squareMeters],
-                ["Hectare": UnitArea.hectares],
-                ["Square Kilometer": UnitArea.squareKilometers]]
+        return [["Square Meters": UnitArea.squareMeters],
+                ["Hectares": UnitArea.hectares],
+                ["Square Kilometers": UnitArea.squareKilometers]]
     }
 
     var imperialValues: [Dictionary<String, Dimension>] {
-        return [["Square Foot": UnitArea.squareFeet],
-                ["Acre": UnitArea.acres],
-                ["Square Mile": UnitArea.squareMiles]]
+        return [["Square Feet": UnitArea.squareFeet],
+                ["Acres": UnitArea.acres],
+                ["Square Miles": UnitArea.squareMiles]]
     }
 
     internal func convert(fromUnit: Dimension, toUnit: Dimension, fromValue: Double) -> Double {
