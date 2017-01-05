@@ -184,12 +184,11 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
     }
   }
 
-  func launchPopOver(_ sender: UIButton, _ isFromUnit: Bool) {
+  func launchPopOver(_ sender: UIButton, _ compelition: @escaping (_ unit: Dictionary<String, Dimension>) -> Void) {
     if let selections = self.unitSelections {
       let VC = storyboard?.instantiateViewController(withIdentifier: "popoverController") as! PopOverViewController
       VC.unitSelections = selections
-      VC.parentController = self
-      VC.isFromUnit = isFromUnit
+      VC.compelition = compelition
       VC.preferredContentSize = CGSize(width: UIScreen.main.bounds.width, height: CGFloat(selections.count * 50))
       let navController = UINavigationController(rootViewController: VC)
       navController.modalPresentationStyle = UIModalPresentationStyle.popover
@@ -210,14 +209,14 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
   @IBAction func fromButtonClick(_ sender: UIButton) {
     if self.fromValues.count > 1 {
       unitSelections = self.fromValues
-      self.launchPopOver(sender, true)
+      self.launchPopOver(sender, fromUnitSelected)
     }
   }
 
   @IBAction func toButtonClick(_ sender: UIButton) {
     if self.toValues.count > 1 {
       unitSelections = self.toValues
-      self.launchPopOver(sender, false)
+      self.launchPopOver(sender, toUnitSelected)
     }
   }
 

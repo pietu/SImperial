@@ -10,8 +10,8 @@ import UIKit
 
 class PopOverViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var isFromUnit: Bool = false
+    var compelition: ((_ unit: Dictionary<String,Dimension>) -> Void)? = nil
     var unitSelections: [Dictionary<String,Dimension>]? = nil
-    var parentController: DataViewController? = nil
     
     internal func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let selections = self.unitSelections {
@@ -36,12 +36,8 @@ class PopOverViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let selections = self.unitSelections {
-            if let parent = self.parentController {
-                if self.isFromUnit {
-                    parent.fromUnitSelected(fromUnit: selections[indexPath.row])
-                } else {
-                    parent.toUnitSelected(toUnit: selections[indexPath.row])
-                }
+            if let cb = compelition {
+                cb(selections[indexPath.row])
             }
         }
         self.dismiss(animated: true, completion: nil)
