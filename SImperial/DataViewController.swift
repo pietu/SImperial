@@ -114,6 +114,7 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
       if (measurement.hasMinusValues) {
         fromMinusButton.isHidden = false
         toMinusButton.isHidden = false
+        determineInvertButtonsTexts()
       } else {
         fromMinusButton.isHidden = true
         toMinusButton.isHidden = true
@@ -133,6 +134,23 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
     } else {
       self.fromTextFieldTopConstraint.constant = 63
       self.toTextFieldTopConstraint.constant = 63
+    }
+  }
+
+  func determineInvertButtonsTexts() {
+    if let fromText = fromTextField.text {
+      if fromText.hasPrefix("-") {
+        fromMinusButton.setTitle("Convert to Positive", for: .normal)
+      } else {
+        fromMinusButton.setTitle("Convert to Negative", for: .normal)
+      }
+    }
+    if let toText = toTextField.text {
+      if toText.hasPrefix("-") {
+        toMinusButton.setTitle("Convert to Positive", for: .normal)
+      } else {
+        toMinusButton.setTitle("Convert to Negative", for: .normal)
+      }
     }
   }
 
@@ -213,6 +231,7 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
       } else {
         self.toTextField.text = ""
       }
+      determineInvertButtonsTexts()
     }
   }
 
@@ -228,6 +247,7 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
       } else {
         self.fromTextField.text = ""
       }
+      determineInvertButtonsTexts()
     }
   }
 
