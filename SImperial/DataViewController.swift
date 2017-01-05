@@ -43,11 +43,11 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
   }
 
   func dismissKeyboard() {
-      view.endEditing(true)
+    view.endEditing(true)
   }
 
   override func didReceiveMemoryWarning() {
-      super.didReceiveMemoryWarning()
+    super.didReceiveMemoryWarning()
   }
 
   func getValuesBy(dimension: Dimension, SIValues: [Dictionary<String, Dimension>], imperialValues: [Dictionary<String, Dimension>]) -> [Dictionary<String, Dimension>] {
