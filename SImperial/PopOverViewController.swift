@@ -25,7 +25,9 @@ class PopOverViewController: UIViewController, UITableViewDelegate, UITableViewD
         let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "unitCell")
         cell.textLabel?.font = UIFont(name: "Montserrat-Regular", size: 17)
         if let selections = self.unitSelections {
-            cell.textLabel?.text = selections[indexPath.row].keys.first
+          if let name = selections[indexPath.row].keys.first {
+            cell.textLabel?.text = name + ",  " + (selections[indexPath.row][name]?.symbol)!
+          }
         } else {
             cell.textLabel?.text = "No content available"
         }
