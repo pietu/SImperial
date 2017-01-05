@@ -63,6 +63,7 @@
                                         <connections>
                                             <action selector="onImperialTouchDown:" destination="S4R-Ja-viH" eventType="touchDown" id="Okq-Pp-iHB"/>
                                             <action selector="onToChanged:" destination="S4R-Ja-viH" eventType="editingChanged" id="aDN-pu-XGT"/>
+                                            <outlet property="delegate" destination="S4R-Ja-viH" id="EjL-5n-kZQ"/>
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XDt-g0-WAI">
@@ -74,10 +75,11 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="24"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                         <connections>
                                             <action selector="onFromChanged:" destination="S4R-Ja-viH" eventType="editingChanged" id="aLv-5Q-2sO"/>
                                             <action selector="onSiTouchDown:" destination="S4R-Ja-viH" eventType="touchDown" id="ciU-SQ-CLO"/>
+                                            <outlet property="delegate" destination="S4R-Ja-viH" id="kam-Sz-7m2"/>
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="I8c-6a-37S">

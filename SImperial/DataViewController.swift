@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DataViewController: UIViewController, UIPopoverPresentationControllerDelegate {
+class DataViewController: UIViewController, UIPopoverPresentationControllerDelegate, UITextFieldDelegate {
   @IBOutlet weak var fromMinusButton: UIButton!
   @IBOutlet weak var toMinusButton: UIButton!
   @IBOutlet weak var toTextFieldTopConstraint: NSLayoutConstraint!
@@ -38,6 +38,8 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
     layer.startPoint = CGPoint(x: 0, y: 0.5)
     layer.endPoint = CGPoint(x: 1.0, y: 0.5)
     self.view.layer.insertSublayer(layer, at: 0)
+    self.fromTextField.delegate = self
+    self.toTextField.delegate = self
   }
 
   func dismissKeyboard() {
@@ -248,6 +250,29 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
         self.fromTextField.text = ""
       }
       determineInvertButtonsTexts()
+    }
+  }
+
+  func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    switch string {
+    case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9":
+      return true
+    case ".":
+      if let chars = textField.text?.characters {
+        var decimalCount = 0
+        for character in chars {
+          if character == "." {
+            decimalCount += 1
+          }
+        }
+        return !(decimalCount == 1)
+      } else {
+        return false
+      }
+    case "":
+      return true
+    default:
+      return false
     }
   }
 
