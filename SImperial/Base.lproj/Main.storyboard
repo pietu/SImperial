@@ -110,9 +110,6 @@
                                             <action selector="toButtonClick:" destination="S4R-Ja-viH" eventType="touchUpInside" id="Ty9-Eq-Xw6"/>
                                         </connections>
                                     </button>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="hvQ-ZQ-gBx">
-                                        <rect key="frame" x="139" y="0.0" width="36" height="36"/>
-                                    </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BOe-Nm-rye">
                                         <rect key="frame" x="8" y="196" width="140" height="20"/>
                                         <constraints>
@@ -163,11 +160,9 @@
                                 <constraints>
                                     <constraint firstItem="InC-ox-2JZ" firstAttribute="top" secondItem="s1b-V9-EN7" secondAttribute="top" constant="113" id="1Cf-gF-iaD"/>
                                     <constraint firstAttribute="trailing" secondItem="IlN-4v-8iH" secondAttribute="trailing" constant="8" id="2GU-Sn-2BZ"/>
-                                    <constraint firstItem="hvQ-ZQ-gBx" firstAttribute="top" secondItem="s1b-V9-EN7" secondAttribute="top" constant="27" id="2Qt-Le-79P"/>
                                     <constraint firstItem="I8c-6a-37S" firstAttribute="leading" secondItem="s1b-V9-EN7" secondAttribute="leading" constant="8" id="3wI-4J-R02"/>
                                     <constraint firstItem="XDt-g0-WAI" firstAttribute="leading" secondItem="s1b-V9-EN7" secondAttribute="leading" constant="8" id="9bR-zb-HiG"/>
                                     <constraint firstAttribute="trailing" secondItem="SPJ-Ys-oDO" secondAttribute="trailing" constant="8" id="H45-oh-f44"/>
-                                    <constraint firstItem="hvQ-ZQ-gBx" firstAttribute="centerX" secondItem="s1b-V9-EN7" secondAttribute="centerX" id="Jjv-4y-np3"/>
                                     <constraint firstItem="XDt-g0-WAI" firstAttribute="top" secondItem="s1b-V9-EN7" secondAttribute="top" constant="113" id="KQT-Ux-2JI"/>
                                     <constraint firstItem="BOe-Nm-rye" firstAttribute="leading" secondItem="s1b-V9-EN7" secondAttribute="leading" constant="8" id="Kag-Os-426"/>
                                     <constraint firstItem="BOe-Nm-rye" firstAttribute="top" secondItem="XDt-g0-WAI" secondAttribute="bottom" constant="23" id="LK8-DP-HGP"/>
