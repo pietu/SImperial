@@ -139,20 +139,20 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
     }
   }
 
+  func determineButtonText(_ text: String, button: UIButton) {
+    if text.hasPrefix("-") {
+      button.setTitle("Convert to Positive", for: .normal)
+    } else {
+      button.setTitle("Convert to Negative", for: .normal)
+    }
+  }
+
   func determineInvertButtonsTexts() {
     if let fromText = fromTextField.text {
-      if fromText.hasPrefix("-") {
-        fromMinusButton.setTitle("Convert to Positive", for: .normal)
-      } else {
-        fromMinusButton.setTitle("Convert to Negative", for: .normal)
-      }
+      determineButtonText(fromText, button: fromMinusButton)
     }
     if let toText = toTextField.text {
-      if toText.hasPrefix("-") {
-        toMinusButton.setTitle("Convert to Positive", for: .normal)
-      } else {
-        toMinusButton.setTitle("Convert to Negative", for: .normal)
-      }
+      determineButtonText(toText, button: toMinusButton)
     }
   }
 
