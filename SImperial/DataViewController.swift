@@ -11,8 +11,6 @@ import UIKit
 class DataViewController: UIViewController, UIPopoverPresentationControllerDelegate, UITextFieldDelegate {
   @IBOutlet weak var fromMinusButton: UIButton!
   @IBOutlet weak var toMinusButton: UIButton!
-  @IBOutlet weak var toTextFieldTopConstraint: NSLayoutConstraint!
-  @IBOutlet weak var fromTextFieldTopConstraint: NSLayoutConstraint!
   @IBOutlet weak var toButton: UIButton!
   @IBOutlet weak var fromButton: UIButton!
   @IBOutlet weak var dataLabel: UILabel!
@@ -126,17 +124,6 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
       self.fromButton.setTitle("", for: .normal)
       self.toButton.setTitle("", for: .normal)
     }
-    determineLayout(orientation: UIApplication.shared.statusBarOrientation)
-  }
-
-  func determineLayout(orientation: UIInterfaceOrientation) {
-    if UIInterfaceOrientationIsPortrait(orientation) {
-      self.fromTextFieldTopConstraint.constant = 113
-      self.toTextFieldTopConstraint.constant = 113
-    } else {
-      self.fromTextFieldTopConstraint.constant = 63
-      self.toTextFieldTopConstraint.constant = 63
-    }
   }
 
   func determineButtonText(_ text: String, button: UIButton) {
@@ -154,10 +141,6 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
     if let toText = toTextField.text {
       determineButtonText(toText, button: toMinusButton)
     }
-  }
-
-  override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
-    determineLayout(orientation: toInterfaceOrientation)
   }
 
   func fromUnitSelected(fromUnit: Dictionary<String,Dimension>) {

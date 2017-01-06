@@ -196,11 +196,9 @@
                         <outlet property="fromButton" destination="I8c-6a-37S" id="dCr-cv-Yjb"/>
                         <outlet property="fromMinusButton" destination="BOe-Nm-rye" id="Fha-Ng-3fu"/>
                         <outlet property="fromTextField" destination="XDt-g0-WAI" id="LYV-v0-gBw"/>
-                        <outlet property="fromTextFieldTopConstraint" destination="KQT-Ux-2JI" id="9IL-cb-LGX"/>
                         <outlet property="toButton" destination="SPJ-Ys-oDO" id="nYh-W9-yfc"/>
                         <outlet property="toMinusButton" destination="IlN-4v-8iH" id="WAw-h8-LW3"/>
                         <outlet property="toTextField" destination="InC-ox-2JZ" id="P35-M4-Kdy"/>
-                        <outlet property="toTextFieldTopConstraint" destination="1Cf-gF-iaD" id="a3L-Vc-XlV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GmD-Rr-ZGN" sceneMemberID="firstResponder"/>
