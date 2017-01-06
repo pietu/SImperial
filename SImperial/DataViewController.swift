@@ -63,25 +63,22 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
     }
   }
 
-  func getUnit(unitName: String, measurement: MyMeasurement) -> Dictionary<String, Dimension> {
-    let foundFromSIValues = measurement.SIValues.filter({(unit: Dictionary<String,Dimension>) -> Bool in
+  func getUnit(_ units: [Dictionary<String,Dimension>], unitName: String) -> Dictionary<String,Dimension>? {
+    let foundUnits = units.filter({(unit: Dictionary<String,Dimension>) -> Bool in
       if let key = unit.keys.first {
         return key == unitName
       } else {
         return false
       }
     })
-    if (foundFromSIValues.count > 0) {
-      return foundFromSIValues.first!
+    return foundUnits.first
+  }
+
+  func getUnit(unitName: String, measurement: MyMeasurement) -> Dictionary<String, Dimension>? {
+    if let foundSIUnit = getUnit(measurement.SIValues, unitName: unitName) {
+      return foundSIUnit
     } else {
-      let foundFromImperialValues = measurement.imperialValues.filter({(unit: Dictionary<String,Dimension>) -> Bool in
-        if let key = unit.keys.first {
-          return key == unitName
-        } else {
-          return false
-        }
-      })
-      return foundFromImperialValues.first!
+      return getUnit(measurement.imperialValues, unitName: unitName)
     }
   }
 
@@ -95,9 +92,15 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
       var toUnit: Dictionary<String,Dimension> = [:]
       if let defaultUnits = defaults.dictionary(forKey: measurement.header) {
         let fromUnitName = defaultUnits["fromUnit"] as! String
-        fromUnit = getUnit(unitName: fromUnitName, measurement: measurement)
         let toUnitName = defaultUnits["toUnit"] as! String
-        toUnit = getUnit(unitName: toUnitName, measurement: measurement)
+        if let fUnit = getUnit(unitName: fromUnitName, measurement: measurement), let tUnit = getUnit(unitName: toUnitName, measurement: measurement) {
+          fromUnit = fUnit
+          toUnit = tUnit
+        } else {
+          fromUnit = measurement.SIValues[0]
+          toUnit = measurement.imperialValues[0]
+          self.defaults.set(["fromUnit": fromUnit.keys.first, "toUnit": toUnit.keys.first], forKey: measurement.header)
+        }
       } else {
         fromUnit = measurement.SIValues[0]
         toUnit = measurement.imperialValues[0]
@@ -146,8 +149,7 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
   func fromUnitSelected(fromUnit: Dictionary<String,Dimension>) {
     if let measurement = self.dataObject {
       let defaultUnits = defaults.dictionary(forKey: measurement.header)
-      let toUnit = getUnit(unitName: defaultUnits?["toUnit"] as! String, measurement: measurement)
-      self.defaults.set(["fromUnit": fromUnit.keys.first, "toUnit": toUnit.keys.first], forKey: self.dataLabel!.text!)
+      self.defaults.set(["fromUnit": fromUnit.keys.first!, "toUnit": defaultUnits?["toUnit"] as! String], forKey: self.dataLabel!.text!)
       let fromUnitName = fromUnit.keys.first
       self.fromButton.setTitle(fromUnitName, for: .normal)
       self.selectedFromUnit = fromUnit[fromUnitName!]
@@ -158,8 +160,7 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
   public func toUnitSelected(toUnit: Dictionary<String,Dimension>) {
     if let measurement = self.dataObject {
       let defaultUnits = defaults.dictionary(forKey: measurement.header)
-      let fromUnit = getUnit(unitName: defaultUnits?["fromUnit"] as! String, measurement: measurement)
-      self.defaults.set(["fromUnit": fromUnit.keys.first, "toUnit": toUnit.keys.first], forKey: self.dataLabel!.text!)
+      self.defaults.set(["fromUnit": defaultUnits?["fromUnit"] as! String, "toUnit": toUnit.keys.first!], forKey: self.dataLabel!.text!)
       let toUnitName = toUnit.keys.first
       self.toButton.setTitle(toUnitName, for: .normal)
       self.selectedToUnit = toUnit[toUnitName!]
@@ -267,22 +268,20 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
   }
 
   @IBAction func onSwitchButtonClicked(_ sender: Any) {
-    if let measurement = self.dataObject {
-      let formerFromValues = self.fromValues
-      let formerSelectedFromUnit = self.selectedFromUnit
-      let formerToValues = self.toValues
-      let formerSelectedToUnit = self.selectedToUnit
-      let defaultUnits = defaults.dictionary(forKey: self.dataLabel!.text!)
-      let formerFromUnit = getUnit(unitName: defaultUnits?["fromUnit"] as! String, measurement: measurement)
-      let formerToUnit = getUnit(unitName: defaultUnits?["toUnit"] as! String, measurement: measurement)
-      
+    let formerFromValues = self.fromValues
+    let formerSelectedFromUnit = self.selectedFromUnit
+    let formerToValues = self.toValues
+    let formerSelectedToUnit = self.selectedToUnit
+    if let defaultUnits = defaults.dictionary(forKey: self.dataLabel!.text!) {
+      let formerFromUnitName = defaultUnits["fromUnit"] as! String
+      let formerToUnitName = defaultUnits["toUnit"] as! String
       self.fromValues = formerToValues
       self.toValues = formerFromValues
       self.selectedFromUnit = formerSelectedToUnit
       self.selectedToUnit = formerSelectedFromUnit
-      self.defaults.set(["fromUnit": formerToUnit.keys.first, "toUnit": formerFromUnit.keys.first], forKey: self.dataLabel!.text!)
-      self.fromButton.setTitle(formerToUnit.keys.first, for: .normal)
-      self.toButton.setTitle(formerFromUnit.keys.first, for: .normal)
+      self.defaults.set(["fromUnit": formerToUnitName, "toUnit": formerFromUnitName], forKey: self.dataLabel!.text!)
+      self.fromButton.setTitle(formerToUnitName, for: .normal)
+      self.toButton.setTitle(formerFromUnitName, for: .normal)
       self.triggerFromValueChange()
     }
   }
