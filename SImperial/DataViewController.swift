@@ -38,6 +38,30 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
     self.view.layer.insertSublayer(layer, at: 0)
     self.fromTextField.delegate = self
     self.toTextField.delegate = self
+    setUpTextFieldBorders(self.fromTextField)
+    setUpTextFieldBorders(self.toTextField)
+  }
+
+  func setUpTextFieldBorders(_ textField: UITextField) {
+    let rect = textField.frame
+    let layer = textField.layer
+    let bottomBorder = CALayer()
+    let rightBorder = CALayer()
+    let width = CGFloat(1.5)
+
+    let color = UIColor(red: 0, green: 0, blue: 0, alpha: 0.4).cgColor
+
+    bottomBorder.borderColor = color
+    rightBorder.borderColor = color
+
+    bottomBorder.frame = CGRect(x: 0, y: rect.size.height - width, width:  rect.size.width, height: rect.size.height)
+    rightBorder.frame = CGRect(x: rect.size.width - width, y: 0, width:  rect.size.width, height: rect.size.height - width)
+
+    bottomBorder.borderWidth = width
+    rightBorder.borderWidth = width
+    layer.addSublayer(bottomBorder)
+    layer.addSublayer(rightBorder)
+    layer.masksToBounds = true
   }
 
   func dismissKeyboard() {
