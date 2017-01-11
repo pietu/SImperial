@@ -19,6 +19,7 @@
 		D6E935621DF86B5100BA740A /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D6E935611DF86B5100BA740A /* Montserrat-Regular.ttf */; };
 		D6E935641DF86B6100BA740A /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D6E935631DF86B6100BA740A /* Montserrat-Bold.ttf */; };
 		D6FC6D1A1E1D89020062CAB5 /* switch.png in Resources */ = {isa = PBXBuildFile; fileRef = D6FC6D191E1D89020062CAB5 /* switch.png */; };
+		D6FC6D1C1E26C09B0062CAB5 /* Dictionary+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FC6D1B1E26C09B0062CAB5 /* Dictionary+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		D6E935611DF86B5100BA740A /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		D6E935631DF86B6100BA740A /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		D6FC6D191E1D89020062CAB5 /* switch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = switch.png; path = SImperial/switch.png; sourceTree = "<group>"; };
+		D6FC6D1B1E26C09B0062CAB5 /* Dictionary+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 				D6E9355F1DF5B55700BA740A /* PopOverViewController.swift */,
 				D6E935611DF86B5100BA740A /* Montserrat-Regular.ttf */,
 				D6E935631DF86B6100BA740A /* Montserrat-Bold.ttf */,
+				D6FC6D1B1E26C09B0062CAB5 /* Dictionary+Extensions.swift */,
 			);
 			path = SImperial;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 				D6E935601DF5B55700BA740A /* PopOverViewController.swift in Sources */,
 				D61A01821DE37FFC005C1D6A /* DataViewController.swift in Sources */,
 				D61A017E1DE37FFC005C1D6A /* AppDelegate.swift in Sources */,
+				D6FC6D1C1E26C09B0062CAB5 /* Dictionary+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

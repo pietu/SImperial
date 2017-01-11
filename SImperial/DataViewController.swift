@@ -123,12 +123,18 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
         } else {
           fromUnit = measurement.SIValues[0]
           toUnit = measurement.imperialValues[0]
-          self.defaults.set(["fromUnit": fromUnit.keys.first, "toUnit": toUnit.keys.first], forKey: measurement.header)
+          self.defaults.set(mergeWithDefaults(["fromUnit": fromUnit.keys.first as Any , "toUnit": toUnit.keys.first as Any]), forKey: measurement.header)
+        }
+        if let fromValue = defaultUnits["fromValue"] {
+          self.fromTextField.text = String(describing: fromValue)
+        }
+        if let toValue = defaultUnits["toValue"] {
+          self.toTextField.text = String(describing: toValue)
         }
       } else {
         fromUnit = measurement.SIValues[0]
         toUnit = measurement.imperialValues[0]
-        self.defaults.set(["fromUnit": fromUnit.keys.first, "toUnit": toUnit.keys.first], forKey: measurement.header)
+        self.defaults.set(mergeWithDefaults(["fromUnit": fromUnit.keys.first as Any, "toUnit": toUnit.keys.first as Any]), forKey: measurement.header)
       }
       let fromUnitName = fromUnit.keys.first
       self.fromButton.setTitle(fromUnitName, for: .normal)
@@ -171,25 +177,19 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
   }
 
   func fromUnitSelected(fromUnit: Dictionary<String,Dimension>) {
-    if let measurement = self.dataObject {
-      let defaultUnits = defaults.dictionary(forKey: measurement.header)
-      self.defaults.set(["fromUnit": fromUnit.keys.first!, "toUnit": defaultUnits?["toUnit"] as! String], forKey: self.dataLabel!.text!)
-      let fromUnitName = fromUnit.keys.first
-      self.fromButton.setTitle(fromUnitName, for: .normal)
-      self.selectedFromUnit = fromUnit[fromUnitName!]
-      self.triggerFromValueChange()
-    }
+    self.defaults.set(mergeWithDefaults(["fromUnit": fromUnit.keys.first!]), forKey: self.dataLabel!.text!)
+    let fromUnitName = fromUnit.keys.first
+    self.fromButton.setTitle(fromUnitName, for: .normal)
+    self.selectedFromUnit = fromUnit[fromUnitName!]
+    self.triggerFromValueChange()
   }
 
   public func toUnitSelected(toUnit: Dictionary<String,Dimension>) {
-    if let measurement = self.dataObject {
-      let defaultUnits = defaults.dictionary(forKey: measurement.header)
-      self.defaults.set(["fromUnit": defaultUnits?["fromUnit"] as! String, "toUnit": toUnit.keys.first!], forKey: self.dataLabel!.text!)
-      let toUnitName = toUnit.keys.first
-      self.toButton.setTitle(toUnitName, for: .normal)
-      self.selectedToUnit = toUnit[toUnitName!]
-      self.triggerFromValueChange()
-    }
+    self.defaults.set(mergeWithDefaults(["toUnit": toUnit.keys.first!]), forKey: self.dataLabel!.text!)
+    let toUnitName = toUnit.keys.first
+    self.toButton.setTitle(toUnitName, for: .normal)
+    self.selectedToUnit = toUnit[toUnitName!]
+    self.triggerFromValueChange()
   }
 
   func launchPopOver(_ sender: UIButton, _ compelition: @escaping (_ unit: Dictionary<String, Dimension>) -> Void) {
@@ -231,14 +231,18 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
   internal func triggerFromValueChange() {
     if let measurement = self.dataObject {
       if let fromText = self.fromTextField.text {
+        var toText = ""
         if let fromValue = Double(fromText) {
           let toValue = measurement.convert(fromUnit: self.selectedFromUnit!, toUnit: self.selectedToUnit!, fromValue: fromValue)
-          self.toTextField.text = String(round(100 * toValue) / 100)
+          toText = String(round(100 * toValue) / 100)
+          self.toTextField.text = toText
         } else {
           self.toTextField.text = ""
         }
+        self.defaults.set(mergeWithDefaults(["fromValue": fromText, "toValue": toText]), forKey: self.dataLabel!.text!)
       } else {
         self.toTextField.text = ""
+        self.defaults.set(mergeWithDefaults(["fromValue": "", "toValue": ""]), forKey: self.dataLabel!.text!)
       }
       determineInvertButtonsTexts()
     }
@@ -247,14 +251,18 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
   internal func triggerToValueChange() {
     if let measurement = self.dataObject {
       if let toText = self.toTextField.text {
+        var fromText = ""
         if let toValue = Double(toText) {
           let fromValue = measurement.convert(fromUnit: self.selectedToUnit!, toUnit: self.selectedFromUnit!, fromValue: toValue)
-          self.fromTextField.text = String(round(100 * fromValue) / 100)
+          fromText = String(round(100 * fromValue) / 100)
+          self.fromTextField.text = fromText
         } else {
           self.fromTextField.text = ""
         }
+        self.defaults.set(mergeWithDefaults(["fromValue": fromText, "toValue": toText]), forKey: self.dataLabel!.text!)
       } else {
         self.fromTextField.text = ""
+        self.defaults.set(mergeWithDefaults(["fromValue": "", "toValue": ""]), forKey: self.dataLabel!.text!)
       }
       determineInvertButtonsTexts()
     }
@@ -303,7 +311,7 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
       self.toValues = formerFromValues
       self.selectedFromUnit = formerSelectedToUnit
       self.selectedToUnit = formerSelectedFromUnit
-      self.defaults.set(["fromUnit": formerToUnitName, "toUnit": formerFromUnitName], forKey: self.dataLabel!.text!)
+      self.defaults.set(mergeWithDefaults(["fromUnit": formerToUnitName, "toUnit": formerFromUnitName]), forKey: self.dataLabel!.text!)
       self.fromButton.setTitle(formerToUnitName, for: .normal)
       self.toButton.setTitle(formerFromUnitName, for: .normal)
       self.triggerFromValueChange()
@@ -342,5 +350,13 @@ class DataViewController: UIViewController, UIPopoverPresentationControllerDeleg
   @IBAction func onImperialTouchDown(_ sender: Any) {
     self.toTextField.becomeFirstResponder()
     self.toTextField.selectedTextRange = self.toTextField.textRange(from: self.toTextField.beginningOfDocument, to: self.toTextField.endOfDocument)
+  }
+
+  func mergeWithDefaults(_ newValues: Dictionary<String,Any>) -> Dictionary<String,Any> {
+    if let defaultUnits = defaults.dictionary(forKey: self.dataLabel.text!) {
+      return defaultUnits + newValues
+    } else {
+      return newValues
+    }
   }
 }
